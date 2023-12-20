@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">PopInteraction</string>
-    <string name="play_depixelimage">Depixelimage</string>
-    <string name="play_guess_voice">Guess the voice</string>
-    <string name="play_emoji_story">Emoji story</string>
+    <string name="depixelimage">Depixelimage</string>
+    <string name="guess_voice">Guess the voice</string>
+    <string name="emoji_story">Emoji story</string>
     <string name="Loading">...</string>
+    <string name="popint">Popint</string>
+    <string name="play">Play</string>
+    <string name="rules">Rules</string>
+    <string name="rules_popup_title">Rules of the game</string>
+    <string name="rules_depixelimage">In DepixelImage, players are challenged to guess an image that gradually depixelates. The main goal is to recognize the image in the process of restoration and provide an accurate response. Over time, the image becomes clearer, allowing players to observe carefully and use their knowledge to identify the subject or scene depicted.\n\nTo play successfully, participants need to be quick in their observation and clever in their deductions. The key to success lies in the ability to recognize the depixelated image before it is completely restored. In other words, it\'s a challenge that tests players\' visual acuity and memory.</string>
+    <string name="rules_guess_voice">OWO</string>
+    <string name="rules_emoji_story">YUY</string>
+
 </resources>
