@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PopInteraction</string>
+    <string name="play_depixelimage">Depixelimage</string>
+    <string name="play_guess_voice">Guess the voice</string>
+    <string name="play_emoji_story">Emoji story</string>
+    <string name="Loading">...</string>
 </resources>
