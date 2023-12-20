@@ -4,15 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:fontFamily="monospace"
+        android:text="Popint"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FF5722"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/depixelimageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072" />
+
+    <ToggleButton
+        android:id="@+id/guessVoiceButton"
+        style="@style/CustomButtonStyle"
+        android:layout_width="298dp"
+        android:layout_height="133dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="navigateToGuessVoice"
+        android:text="@string/play_guess_voice"
+        android:textColor="@color/white"
+        android:textOff="@string/play_guess_voice"
+        android:textOn="@string/Loading"
+        app:layout_constraintBottom_toTopOf="@+id/depixelimageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/depixelimageButton"
+        style="@style/CustomButtonStyle"
+        android:layout_width="298dp"
+        android:layout_height="133dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/play_depixelimage"
+        android:textColor="@color/white"
+        android:textOff="@string/play_depixelimage"
+        android:textOn="@string/Loading"
+        app:layout_constraintBottom_toTopOf="@+id/emojieStoryButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="navigateToDepixelImage"/>
+
+    <ToggleButton
+        android:id="@+id/emojieStoryButton"
+        style="@style/CustomButtonStyle"
+        android:layout_width="298dp"
+        android:layout_height="133dp"
+        android:layout_marginBottom="228dp"
+        android:text="@string/play_emoji_story"
+        android:textColor="@color/white"
+        android:textOff="@string/play_emoji_story"
+        android:textOn="@string/Loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:onClick="navigateToEmojiStory"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
