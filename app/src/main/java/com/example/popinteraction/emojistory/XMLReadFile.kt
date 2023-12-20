@@ -9,7 +9,7 @@ import java.io.IOException
 class XMLReadFile {
 
     //Methode pour récupérer la liste des object emoji story dans un fochier xml
-    fun readXmlEmojiObjects(context: Context): List<EmojiStoryObject> {
+    fun readXmlEmojiObjects(context: Context): MutableList<EmojiStoryObject> {
         val emojiObjects = mutableListOf<EmojiStoryObject>()
 
         try {
