@@ -3,27 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".GuessVoiceActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guess_voice"
+        style="@style/TitleStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:onClick="navigateToMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete"/>
+        app:srcCompat="@android:drawable/ic_delete"
+        android:onClick="navigateToMenu"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guess the voice"
+    <ToggleButton
+        android:id="@+id/playButton"
+        style="@style/CustomButtonStyle"
+        android:layout_width="139dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/play"
+        android:textOff="@string/play"
+        android:textOn="@string/Loading"
+        app:layout_constraintBottom_toTopOf="@+id/rulesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.714" />
+
+    <ToggleButton
+        android:id="@+id/rulesButton"
+        style="@style/CustomButtonStyle"
+        android:layout_width="134dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="324dp"
+        android:onClick="showRulesPopup"
+        android:text="@string/play"
+        android:textOff="@string/rules"
+        android:textOn="@string/rules"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
