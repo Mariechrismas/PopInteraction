@@ -1,9 +1,8 @@
 package com.example.popinteraction.emojistory
 
 data class EmojiStoryParty (
-    var currentParty: String,
+    var currentParty: EmojiStoryObject,
     val levelList: MutableList<EmojiStoryObject>,
     var score: Int,
-){
-    constructor() : this("", mutableListOf(), 0)
+    val answerIsGood: Boolean = false){
 }

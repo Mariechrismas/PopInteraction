@@ -30,7 +30,8 @@ class XMLReadFile {
                                     image1 = xmlParser.getAttributeValue(null, "emoji1"),
                                     image2 = xmlParser.getAttributeValue(null, "emoji2"),
                                     image3 = xmlParser.getAttributeValue(null, "emoji3"),
-                                    responseImage = xmlParser.getAttributeValue(null, "responseImage")
+                                    responseImage = xmlParser.getAttributeValue(null, "responseImage"),
+                                    listAnswerString = creatList(xmlParser.getAttributeValue(null,"listAnswerString"))
                                 )
                             }
                         }
@@ -52,5 +53,10 @@ class XMLReadFile {
         }
 
         return emojiObjects
+    }
+
+    private fun creatList(stringList: String): List<String>{
+        val listOfAnswer = stringList.split(",").toMutableList()
+        return listOfAnswer
     }
 }

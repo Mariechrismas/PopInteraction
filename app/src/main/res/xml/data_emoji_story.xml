@@ -7,7 +7,8 @@
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
-        responseImage="@drawable/the_lion_king" />
+        responseImage="@drawable/the_lion_king"
+        listAnswerString="ROI LION,LION KING,LE ROI LION,THE LION KING"/>
 
     <object
         name="Penguin"
@@ -15,6 +16,7 @@
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
-        responseImage="@drawable/penguin" />
+        responseImage="@drawable/penguin"
+        listAnswerString="ROI LION,LION KING,LE ROI LION,THE LION KING"/>
 
 </resources>

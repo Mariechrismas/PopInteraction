@@ -6,7 +6,8 @@ data class EmojiStoryObject(
     val image1: String,
     val image2: String,
     val image3: String,
-    val responseImage: String
+    val responseImage: String,
+    val listAnswerString: List<String>
 )
 
 

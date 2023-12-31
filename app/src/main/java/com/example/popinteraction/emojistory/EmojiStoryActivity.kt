@@ -3,17 +3,17 @@ package com.example.popinteraction.emojistory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import kotlin.random.Random
 
 class EmojiStoryActivity : AppCompatActivity() {
-    private var emojiStoryParty = EmojiStoryParty()
-
+    private lateinit var emojiStoryParty : EmojiStoryParty
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_emojie_story)
+        setContentView(R.layout.activity_emoji_story)
 
         InitParty(1);
 
@@ -32,12 +32,23 @@ class EmojiStoryActivity : AppCompatActivity() {
             }
         }
 
-        emojiStoryParty.currentParty = emojiStoryParty.levelList.first().toString();
+        emojiStoryParty.currentParty = emojiStoryParty.levelList.first()
     }
 
-
+    //Cette methode permet de retourner vers la page de menu
     fun navigateToMenu(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    //On regarde si la valeur proposé est bonne et on réagit en conséquence
+    private fun validateWord(view: View){
+        val answer = findViewById<EditText>(R.id.selectionEditText)
+        val userInput = answer.text.toString()
+
+        if (emojiStoryParty.currentParty.listAnswerString.contains(userInput)) {
+
+        } else {
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.emojistory.EmojiStoryActivity
+import com.example.popinteraction.emojistory.EmojiStoryFrontPage
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToEmojiStory(view: View) {
-        val intent = Intent(this, EmojiStoryActivity::class.java)
+        val intent = Intent(this, EmojiStoryFrontPage::class.java)
         startActivity(intent)
     }
 
