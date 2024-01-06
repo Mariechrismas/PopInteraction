@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.popinteraction.depixelimage.DepixelimageMenu
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToDepixelImage(view: View) {
-        val intent = Intent(this, DepixelimageActivity::class.java)
+        val intent = Intent(this, DepixelimageMenu::class.java)
         startActivity(intent)
     }
 
