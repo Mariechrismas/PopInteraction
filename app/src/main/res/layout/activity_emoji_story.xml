@@ -33,6 +33,70 @@
         app:srcCompat="@android:drawable/ic_delete"
         android:onClick="navigateToMenu"/>
 
+    <TextView
+        android:id="@+id/theme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        style="@style/TextStyle"
+        android:text="Theme: "
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+
+    <TextView
+        android:id="@+id/emoji1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="right"
+        style="@style/TitleStyle"
+        android:text="Init"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/emoji2"
+        app:layout_constraintHorizontal_bias="0.33" />
+
+    <TextView
+        android:id="@+id/emoji2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        style="@style/TitleStyle"
+        android:text="Init"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@id/emoji1"
+        app:layout_constraintEnd_toStartOf="@id/emoji3"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <TextView
+        android:id="@+id/emoji3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        style="@style/TitleStyle"
+        android:text="Init"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@id/emoji2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:gravity="right"
+        style="@style/TextStyle"
+        android:text="Score: 0"
+        app:layout_constraintTop_toBottomOf="@id/emoji1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.33" />
+
     <EditText
         android:id="@+id/selectionEditText"
         android:layout_width="0dp"

@@ -13,5 +13,7 @@
     <string name="rules_emoji_story">YUY</string>
     <string name="validate">Validate</string>
     <string name="enter_text">Enter your answer</string>
+    <string name="score">Score</string>
+    <string name="theme">Theme</string>
 
 </resources>

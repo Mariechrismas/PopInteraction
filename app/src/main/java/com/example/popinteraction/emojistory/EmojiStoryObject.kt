@@ -1,6 +1,6 @@
 package com.example.popinteraction.emojistory
 
-data class EmojiStoryObject(
+open class EmojiStoryObject(
     val name: String,
     val categorie: String,
     val image1: String,

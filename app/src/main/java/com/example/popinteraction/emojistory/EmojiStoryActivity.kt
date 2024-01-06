@@ -4,13 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import kotlin.random.Random
 
 class EmojiStoryActivity : AppCompatActivity() {
-    private lateinit var emojiStoryParty : EmojiStoryParty
+    private var emojiStoryParty : EmojiStoryParty = EmojiStoryParty()
+    private lateinit var displayEmoji1: TextView
+    private lateinit var displayEmoji2: TextView
+    private lateinit var displayEmoji3: TextView
+    private lateinit var answer: EditText
+    private lateinit var score: TextView
+    private lateinit var theme: TextView
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emoji_story)
@@ -32,23 +41,40 @@ class EmojiStoryActivity : AppCompatActivity() {
             }
         }
 
-        emojiStoryParty.currentParty = emojiStoryParty.levelList.first()
-    }
+        emojiStoryParty.currentParty = EmojiStoryCurrent(emojiStoryParty.levelList.first())
+        score = findViewById(R.id.score)
+        score.text = resources.getString(R.string.score) + ": " + emojiStoryParty.score
 
-    //Cette methode permet de retourner vers la page de menu
-    fun navigateToMenu(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        theme = findViewById(R.id.theme)
+        theme.text = resources.getString(R.string.score) + ": " + emojiStoryParty.currentParty.categorie
+
+        answer = findViewById(R.id.selectionEditText)
+        displayEmoji1 = findViewById(R.id.emoji1)
+        displayEmoji2 = findViewById(R.id.emoji2)
+        displayEmoji3 = findViewById(R.id.emoji3)
+        displayEmoji1.text = "❓"
+        displayEmoji2.text = "❓"
+        displayEmoji3.text = "❓"
     }
 
     //On regarde si la valeur proposé est bonne et on réagit en conséquence
-    private fun validateWord(view: View){
-        val answer = findViewById<EditText>(R.id.selectionEditText)
+     fun validateWord(view: View){
         val userInput = answer.text.toString()
 
-        if (emojiStoryParty.currentParty.listAnswerString.contains(userInput)) {
-
+        if (emojiStoryParty.currentParty.listAnswerString.contains(userInput.toUpperCase())) {
+            emojiStoryParty.currentParty.answerIsGood = true
         } else {
+            emojiStoryParty.currentParty.numberOfEmojiDisplay++
+            answer.setText(" ")
+            when(emojiStoryParty.currentParty.numberOfEmojiDisplay){
+                1 -> displayEmoji1.text = emojiStoryParty.currentParty.image1
+                2 -> displayEmoji2.text = emojiStoryParty.currentParty.image2
+                3 -> displayEmoji3.text = emojiStoryParty.currentParty.image3
+            }
+
+            emojiStoryParty.score++
+            score.text = resources.getString(R.string.score) + ": " + emojiStoryParty.score
         }
+
     }
 }
