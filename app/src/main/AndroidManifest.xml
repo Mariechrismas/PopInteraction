@@ -30,7 +30,11 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".DepixelimageActivity"
+            android:name=".depixelimage.DepixelimageMenu"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".depixelimage.DepixelimageActivity"
             android:exported="true">
         </activity>
     </application>

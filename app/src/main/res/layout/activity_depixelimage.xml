@@ -5,62 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".DepixelimageActivity">
+    tools:context=".depixelimage.DepixelimageActivity">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/clue"
+        style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/depixelimage"
-        style="@style/TitleStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete"
-        android:onClick="navigateToMenu"/>
-
-    <ToggleButton
-        android:id="@+id/playButton"
-        style="@style/CustomButtonStyle"
-        android:layout_width="139dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/play"
-        android:textOff="@string/play"
-        android:textOn="@string/Loading"
-        app:layout_constraintBottom_toTopOf="@+id/rulesButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.714" />
-
-    <ToggleButton
-        android:id="@+id/rulesButton"
-        style="@style/CustomButtonStyle"
-        android:layout_width="134dp"
-        android:layout_height="97dp"
-        android:layout_marginBottom="320dp"
-        android:text="@string/play"
-        android:textOff="@string/rules"
-        android:textOn="@string/rules"
-        android:onClick="showRulesPopup"
+        android:id="@+id/image"
+        android:layout_width="388dp"
+        android:layout_height="446dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/Answer"
+        android:layout_width="215dp"
+        android:layout_height="52dp"
+        android:background="#A8FF5722"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintVertical_bias="0.172" />
+
+    <ToggleButton
+        android:id="@+id/submit"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:textOff="@string/submit"
+        android:textOn="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Answer"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <ToggleButton
+        android:id="@+id/stop"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stop"
+        android:textOff="@string/stop"
+        android:textOn="@string/go"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Answer"
+        app:layout_constraintVertical_bias="0.16" />
+
+    <ToggleButton
+        android:id="@+id/next"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:textOff="@string/next"
+        android:textOn="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Answer"
+        app:layout_constraintVertical_bias="0.43" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
