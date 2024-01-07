@@ -15,5 +15,10 @@
     <string name="enter_text">Enter your answer</string>
     <string name="score">Score</string>
     <string name="theme">Theme</string>
+    <string name="indice">Indice</string>
+    <string name="game_over">Game Over</string>
+
+
+
 
 </resources>

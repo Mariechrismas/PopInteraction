@@ -7,6 +7,7 @@
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
+        indice="Disney"
         responseImage="@drawable/the_lion_king"
         listAnswerString="ROI LION,LION KING,LE ROI LION,THE LION KING"/>
 
@@ -15,8 +16,9 @@
         categorie="Animal"
         emoji1="❄️"
         emoji2="🎩"
-        emoji3="🐧"
+        emoji3="🤵‍♂️"
+        indice="🐧"
         responseImage="@drawable/penguin"
-        listAnswerString="ROI LION,LION KING,LE ROI LION,THE LION KING"/>
+        listAnswerString="PINGUIN,PENGUIN"/>
 
 </resources>
