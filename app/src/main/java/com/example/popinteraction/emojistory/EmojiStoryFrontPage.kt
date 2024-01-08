@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popinteraction.DepixelimageActivity
 import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 

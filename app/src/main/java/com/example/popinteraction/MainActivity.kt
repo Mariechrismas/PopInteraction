@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.popinteraction.depixelimage.DepixelimageActivity
 import com.example.popinteraction.emojistory.EmojiStoryActivity
 import com.example.popinteraction.emojistory.EmojiStoryFrontPage
 

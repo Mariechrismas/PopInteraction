@@ -17,8 +17,9 @@
     <string name="theme">Theme</string>
     <string name="indice">Indice</string>
     <string name="game_over">Game Over</string>
-
-
-
-
+    <string name="number_game">Number of game</string>
+    <string name="submit">Submit</string>
+    <string name="stop">Stop</string>
+    <string name="go">Go</string>
+    <string name="next">Next</string>
 </resources>
