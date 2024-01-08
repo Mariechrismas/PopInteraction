@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <object
+        name="the_lion_king"
+        categorie="Movie"
+        emoji1="🎶"
+        emoji2="🌅"
+        emoji3="🦁"
+        image="image_leroilion"
+        listAnswerString="ROI LION"/>
+
+    <object
+        name="Penguin"
+        categorie="Animal"
+        emoji1="❄️"
+        emoji2="🎩"
+        emoji3="🐧"
+        image="image_penguin"
+        listAnswerString="Penguin"/>
+
+    <object
+        name="avatar"
+        categorie="Film"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_avatar"
+        listAnswerString="avatar"/>
+
+    <object
+        name="dofus."
+        categorie="Jeux"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_dofus"
+        listAnswerString="dofus"/>
+
+    <object
+        name="friends"
+        categorie="Film"
+        emoji1="❄️"
+        emoji2="🎩"
+        emoji3="🐧"
+        image="image_friends"
+        listAnswerString="friends"/>
+
+    <object
+        name="gardiens_de_la_galaxie"
+        categorie="Film"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_gardiensdelagalaxie"
+        listAnswerString="gardien de la galaxie"/>
+
+    <object
+        name="intouchable"
+        categorie="Film"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_intouchable"
+        listAnswerString="intouchable"/>
+
+    <object
+        name="james_bond"
+        categorie="Film"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_jamesbond"
+        listAnswerString="james bond"/>
+
+    <object
+        name="mario_kart"
+        categorie="Jeux"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_mariokart"
+        listAnswerString="mario kart"/>
+
+    <object
+        name="stranger_things"
+        categorie="Serie"
+        emoji1=""
+        emoji2=""
+        emoji3=""
+        image="image_strangerthings"
+        listAnswerString="stranger things" />
+
+</resources>
