@@ -8,7 +8,7 @@
         emoji2="🌅"
         emoji3="🦁"
         indice="Disney"
-        responseImage="the_lion_king"
+        responseImage="image_leroilion"
         listAnswerString="ROI LION,LION KING,LE ROI LION,THE LION KING"/>
 
     <object
@@ -18,7 +18,7 @@
         emoji2="🎩"
         emoji3="🤵‍♂️"
         indice="🐧"
-        responseImage="penguin"
+        responseImage="image_penguin"
         listAnswerString="PINGUIN,PENGUIN"/>
 
 </resources>
