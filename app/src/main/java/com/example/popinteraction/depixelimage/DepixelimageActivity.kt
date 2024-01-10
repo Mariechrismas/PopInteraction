@@ -3,7 +3,6 @@ package com.example.popinteraction.depixelimage
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -43,7 +42,7 @@ class DepixelimageActivity : AppCompatActivity() {
 
         initializeViews()
 
-        val xmlReadFile = XMLReadFile()
+        val xmlReadFile = XMLReadFile
         dataObjects = xmlReadFile.readXmlDataObjects(this)
 
         showNextImage()
@@ -152,6 +151,7 @@ class DepixelimageActivity : AppCompatActivity() {
         val randomIndex = availableIndices.shuffled().firstOrNull()
 
         if (randomIndex != null) {
+            imageIndex = randomIndex + 1
             val currentDataObject = dataObjects[randomIndex]
             shownImageIndices.add(randomIndex)
 

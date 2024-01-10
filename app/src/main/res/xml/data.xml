@@ -3,10 +3,11 @@
 <resources>
     <object
         name="the_lion_king"
-        categorie="Movie"
+        categorie="Film"
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
+        clue=""
         image="image_leroilion"
         listAnswerString="ROI LION"/>
 
@@ -16,6 +17,7 @@
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
+        clue=""
         image="image_penguin"
         listAnswerString="Penguin"/>
 
@@ -25,24 +27,27 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_avatar"
         listAnswerString="avatar"/>
 
     <object
         name="dofus."
-        categorie="Jeux"
+        categorie="Game"
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_dofus"
         listAnswerString="dofus"/>
 
     <object
         name="friends"
-        categorie="Film"
+        categorie="Series"
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
+        clue=""
         image="image_friends"
         listAnswerString="friends"/>
 
@@ -52,6 +57,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_gardiensdelagalaxie"
         listAnswerString="gardien de la galaxie"/>
 
@@ -61,6 +67,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_intouchable"
         listAnswerString="intouchable"/>
 
@@ -70,24 +77,27 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_jamesbond"
         listAnswerString="james bond"/>
 
     <object
         name="mario_kart"
-        categorie="Jeux"
+        categorie="Game"
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_mariokart"
         listAnswerString="mario kart"/>
 
     <object
         name="stranger_things"
-        categorie="Serie"
+        categorie="Series"
         emoji1=""
         emoji2=""
         emoji3=""
+        clue=""
         image="image_strangerthings"
         listAnswerString="stranger things" />
 

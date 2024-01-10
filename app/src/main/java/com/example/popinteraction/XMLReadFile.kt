@@ -7,7 +7,13 @@ import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 
-class XMLReadFile {
+
+object XMLReadFile {
+    private var selectedCategories = listOf("Film", "Series", "Game", "Animal", "Actor", "Anime", "Cartoon", "Singer")
+
+    fun initSelectedCategories(categories: List<String>) {
+        selectedCategories = categories
+    }
 
     fun readXmlDataObjects(context: Context): MutableList<DataObject> {
         val dataObjects = mutableListOf<DataObject>()
@@ -26,19 +32,21 @@ class XMLReadFile {
                             "object" -> {
                                 currentDataObject = DataObject(
                                     name = xmlParser.getAttributeValue(null, "name"),
-                                    categorie = xmlParser.getAttributeValue(null,"categorie"),
+                                    categorie = xmlParser.getAttributeValue(null, "categorie"),
                                     emoji1 = xmlParser.getAttributeValue(null, "emoji1"),
                                     emoji2 = xmlParser.getAttributeValue(null, "emoji2"),
                                     emoji3 = xmlParser.getAttributeValue(null, "emoji3"),
                                     image = xmlParser.getAttributeValue(null, "image"),
-                                    listAnswerString = creatList(xmlParser.getAttributeValue(null,"listAnswerString"))
+                                    listAnswerString = createList(xmlParser.getAttributeValue(null, "listAnswerString"))
                                 )
                             }
                         }
                     }
 
                     XmlPullParser.END_TAG -> {
-                        if (xmlParser.name == "object" && currentDataObject != null) {
+                        if (xmlParser.name == "object" && currentDataObject != null &&
+                            currentDataObject.categorie in selectedCategories
+                        ) {
                             dataObjects.add(currentDataObject)
                         }
                     }
@@ -55,8 +63,7 @@ class XMLReadFile {
         return dataObjects
     }
 
-    private fun creatList(stringList: String): List<String>{
-        val listOfAnswer = stringList.split(",").toMutableList()
-        return listOfAnswer
+    private fun createList(stringList: String): List<String> {
+        return stringList.split(",").toMutableList()
     }
 }

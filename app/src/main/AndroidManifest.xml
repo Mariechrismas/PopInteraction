@@ -37,6 +37,22 @@
             android:name=".depixelimage.DepixelimageActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".parameter.ParameterActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.CategorieActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.UploadActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.UploadPopup"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
