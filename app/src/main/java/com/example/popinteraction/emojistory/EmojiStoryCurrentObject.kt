@@ -1,6 +1,6 @@
 package com.example.popinteraction.emojistory
 
-class EmojiStoryCurrent(
+open class EmojiStoryCurrentObject (
     name: String,
     categorie: String,
     image1: String,

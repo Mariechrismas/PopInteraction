@@ -4,13 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
 import kotlin.random.Random
 
 class EmojiStoryActivity : AppCompatActivity() {
-    private val emojiStoryParty : EmojiStoryParty = EmojiStoryParty()
+    private val emojiStoryPartyObject : EmojiStoryPartyObject = EmojiStoryPartyObject()
     private lateinit var displayEmoji1: TextView
     private lateinit var displayEmoji2: TextView
     private lateinit var displayEmoji3: TextView
@@ -18,14 +20,14 @@ class EmojiStoryActivity : AppCompatActivity() {
     private lateinit var score: TextView
     private lateinit var theme: TextView
     private lateinit var indice: TextView
+    private lateinit var validateButton: ToggleButton
+    private lateinit var imageSolution: ImageView
     private var currentParty: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emoji_story)
-
         InitGame(2);
-
     }
 
     //Methode pour initialiser la party. "numberOfLevel" correspond au nombre d'EmojiStoryObject à deviner
@@ -36,12 +38,14 @@ class EmojiStoryActivity : AppCompatActivity() {
         for(i in 0 until numberOfLevel){
             if (emojiObjectsList.isNotEmpty()){
                 val randomLevel = Random.nextInt(emojiObjectsList.size)
-                emojiStoryParty.levelList.add(emojiObjectsList[randomLevel])
+                emojiStoryPartyObject.levelList.add(emojiObjectsList[randomLevel])
                 emojiObjectsList.removeAt(randomLevel)
             }
         }
 
-        emojiStoryParty.currentParty = EmojiStoryCurrent(emojiStoryParty.levelList.first())
+        emojiStoryPartyObject.currentParty = EmojiStoryCurrentObject(emojiStoryPartyObject.levelList.first())
+        validateButton = findViewById(R.id.validateButton)
+        imageSolution = findViewById(R.id.imagesolution)
         score = findViewById(R.id.score)
         theme = findViewById(R.id.theme)
         answer = findViewById(R.id.selectionEditText)
@@ -56,31 +60,31 @@ class EmojiStoryActivity : AppCompatActivity() {
     fun initNewParty(){
         indice.text = " "
 
-        if (currentParty < emojiStoryParty.levelList.size - 1) {
+        if (currentParty < emojiStoryPartyObject.levelList.size - 1) {
             currentParty++
-            emojiStoryParty.currentParty = EmojiStoryCurrent(emojiStoryParty.levelList[currentParty])
+            emojiStoryPartyObject.currentParty = EmojiStoryCurrentObject(emojiStoryPartyObject.levelList[currentParty])
         } else {
             val intent = Intent(this, EmojiStoryScore::class.java)
-            intent.putExtra("Score", emojiStoryParty.score.toString())
+            intent.putExtra("Score", emojiStoryPartyObject.score.toString())
             startActivity(intent)
         }
 
-        theme.text = resources.getString(R.string.theme) + ": " + emojiStoryParty.currentParty.categorie
-        score.text = resources.getString(R.string.score) + ": " + emojiStoryParty.score
-        displayEmoji1.text = emojiStoryParty.currentParty.image1
+        theme.text = resources.getString(R.string.theme) + ": " + emojiStoryPartyObject.currentParty.categorie
+        score.text = resources.getString(R.string.score) + ": " + emojiStoryPartyObject.score
+        displayEmoji1.text = emojiStoryPartyObject.currentParty.image1
         displayEmoji2.text = "❓"
         displayEmoji3.text = "❓"
-
+        imageSolution.setImageResource(R.drawable.transparent_picture)
 
     }
 
     //On calcul les scores en fonction du nombre de tentative
     fun calculateScore(){
-        when(emojiStoryParty.currentParty.numberOfEmojiDisplay){
-            1 -> emojiStoryParty.score += 4
-            2 -> emojiStoryParty.score += 3
-            3 -> emojiStoryParty.score += 2
-            4 -> emojiStoryParty.score += 1
+        when(emojiStoryPartyObject.currentParty.numberOfEmojiDisplay){
+            1 -> emojiStoryPartyObject.score += 4
+            2 -> emojiStoryPartyObject.score += 3
+            3 -> emojiStoryPartyObject.score += 2
+            4 -> emojiStoryPartyObject.score += 1
         }
     }
 
@@ -88,22 +92,37 @@ class EmojiStoryActivity : AppCompatActivity() {
      fun validateWord(view: View){
         val userInput = answer.text.toString()
 
-        if (emojiStoryParty.currentParty.listAnswerString.contains(userInput.toUpperCase())) {
-            calculateScore()
+        if(emojiStoryPartyObject.currentParty.answerIsGood){
             initNewParty()
-            emojiStoryParty.currentParty.answerIsGood = true
-        } else if(emojiStoryParty.currentParty.numberOfEmojiDisplay < 4) {
-            emojiStoryParty.currentParty.numberOfEmojiDisplay++
-            when(emojiStoryParty.currentParty.numberOfEmojiDisplay){
-                1 -> displayEmoji1.text = emojiStoryParty.currentParty.image1
-                2 -> displayEmoji2.text = emojiStoryParty.currentParty.image2
-                3 -> displayEmoji3.text = emojiStoryParty.currentParty.image3
-                4 -> indice.text = resources.getString(R.string.indice) + ": " + emojiStoryParty.currentParty.indice
+        }else {
+            if (emojiStoryPartyObject.currentParty.listAnswerString.contains(userInput.toUpperCase()) || emojiStoryPartyObject.currentParty.numberOfEmojiDisplay >= 4) {
+                emojiStoryPartyObject.currentParty.numberOfEmojiDisplay++
+                calculateScore()
+                answer.setText(resources.getString(R.string.congratulation))
+                validateButton.text = resources.getString(R.string.next_party)
+                val resourceId = resources.getIdentifier(
+                    emojiStoryPartyObject.currentParty.responseImage,
+                    "drawable",
+                    packageName
+                )
+                if (resourceId > 0) {
+                    imageSolution.setImageResource(resourceId)
+                }
+
+                emojiStoryPartyObject.currentParty.answerIsGood = true
+            } else if (emojiStoryPartyObject.currentParty.numberOfEmojiDisplay < 4) {
+                emojiStoryPartyObject.currentParty.numberOfEmojiDisplay++
+                when (emojiStoryPartyObject.currentParty.numberOfEmojiDisplay) {
+                    1 -> displayEmoji1.text = emojiStoryPartyObject.currentParty.image1
+                    2 -> displayEmoji2.text = emojiStoryPartyObject.currentParty.image2
+                    3 -> displayEmoji3.text = emojiStoryPartyObject.currentParty.image3
+                    4 -> indice.text = resources.getString(R.string.indice) + ": " + emojiStoryPartyObject.currentParty.indice
+                }
             }
-        }else{
-            initNewParty()
+
+            score.text = resources.getString(R.string.score) + ": " + emojiStoryPartyObject.score
         }
+
         answer.setText("")
-        score.text = resources.getString(R.string.score) + ": " + emojiStoryParty.score
     }
 }
