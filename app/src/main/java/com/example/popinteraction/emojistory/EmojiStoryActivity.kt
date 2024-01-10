@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import kotlin.random.Random
 
@@ -124,5 +125,11 @@ class EmojiStoryActivity : AppCompatActivity() {
         }
 
         answer.setText("")
+    }
+
+    //Methode pour retourner à la page précédente
+    fun navigateToMenu(view: View) {
+        val intent = Intent(this, EmojiStoryFrontPage::class.java)
+        startActivity(intent)
     }
 }

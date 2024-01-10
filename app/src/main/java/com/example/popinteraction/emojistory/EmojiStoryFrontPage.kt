@@ -20,6 +20,7 @@ class EmojiStoryFrontPage: AppCompatActivity() {
         startActivity(intent)
     }
 
+    //Methode pour retourner à la page précédente
     fun navigateToMenu(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

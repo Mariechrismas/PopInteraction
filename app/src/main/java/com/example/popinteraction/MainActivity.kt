@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.depixelimage.DepixelimageActivity
+import com.example.popinteraction.depixelimage.DepixelimageMenu
 import com.example.popinteraction.emojistory.EmojiStoryActivity
 import com.example.popinteraction.emojistory.EmojiStoryFrontPage
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToDepixelImage(view: View) {
-        val intent = Intent(this, DepixelimageActivity::class.java)
+        val intent = Intent(this, DepixelimageMenu::class.java)
         startActivity(intent)
     }
 
