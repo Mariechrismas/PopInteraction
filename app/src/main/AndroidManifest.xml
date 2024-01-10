@@ -26,7 +26,13 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".EmojiStoryActivity"
+            android:name=".emojistory.EmojiStoryActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".emojistory.EmojiStoryFrontPage"
+            android:exported="true">
+        </activity>
+        <activity android:name=".emojistory.EmojiStoryScore"
             android:exported="true">
         </activity>
         <activity

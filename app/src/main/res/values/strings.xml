@@ -10,11 +10,18 @@
     <string name="rules_popup_title">Rules of the game</string>
     <string name="rules_depixelimage">In DepixelImage, players are challenged to guess an image that gradually depixelates. The main goal is to recognize the image in the process of restoration and provide an accurate response. Over time, the image becomes clearer, allowing players to observe carefully and use their knowledge to identify the subject or scene depicted.\n\nTo play successfully, participants need to be quick in their observation and clever in their deductions. The key to success lies in the ability to recognize the depixelated image before it is completely restored. In other words, it\'s a challenge that tests players\' visual acuity and memory.</string>
     <string name="rules_guess_voice">OWO</string>
-    <string name="rules_emoji_story">YUY</string>
+    <string name="rules_emoji_story">In EmojiStory, player are challenged to guess subject, with like clue 3 emoji display after each error and one clue and the theme. The score is calculate in function of the numbers of this errors. </string>
+    <string name="validate">Validate</string>
+    <string name="enter_text">Enter your answer</string>
+    <string name="score">Score</string>
+    <string name="theme">Theme</string>
+    <string name="indice">Indice</string>
+    <string name="game_over">Game Over</string>
     <string name="number_game">Number of game</string>
     <string name="submit">Submit</string>
     <string name="stop">Stop</string>
     <string name="go">Go</string>
     <string name="next">Next</string>
-
+    <string name="congratulation">Congratulation</string>
+    <string name="next_party">Next party</string>
 </resources>

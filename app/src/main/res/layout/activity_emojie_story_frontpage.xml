@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".EmojiStoryActivity">
+    tools:context=".emojistory.EmojiStoryFrontPage">
 
     <TextView
         android:id="@+id/title"
@@ -42,10 +42,10 @@
         android:text="@string/play"
         android:textOff="@string/play"
         android:textOn="@string/Loading"
+        android:onClick="play"
         app:layout_constraintBottom_toTopOf="@+id/rulesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.714" />
 
     <ToggleButton
