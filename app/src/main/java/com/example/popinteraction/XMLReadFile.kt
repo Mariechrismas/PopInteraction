@@ -31,6 +31,7 @@ class XMLReadFile {
                                     emoji2 = xmlParser.getAttributeValue(null, "emoji2"),
                                     emoji3 = xmlParser.getAttributeValue(null, "emoji3"),
                                     image = xmlParser.getAttributeValue(null, "image"),
+                                    music = xmlParser.getAttributeValue(null,"music"),
                                     listAnswerString = creatList(xmlParser.getAttributeValue(null,"listAnswerString"))
                                 )
                             }

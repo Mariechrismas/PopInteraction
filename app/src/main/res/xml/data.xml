@@ -7,6 +7,7 @@
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
+        music="app/src/main/res/raw/music_the_lion_king.mp3"
         image="image_leroilion"
         listAnswerString="ROI LION"/>
 
@@ -16,6 +17,7 @@
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
+        music=""
         image="image_penguin"
         listAnswerString="Penguin"/>
 
@@ -25,6 +27,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music=""
         image="image_avatar"
         listAnswerString="avatar"/>
 
@@ -34,6 +37,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music=""
         image="image_dofus"
         listAnswerString="dofus"/>
 
@@ -43,6 +47,7 @@
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
+        music=""
         image="image_friends"
         listAnswerString="friends"/>
 
@@ -52,6 +57,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music=""
         image="image_gardiensdelagalaxie"
         listAnswerString="gardien de la galaxie"/>
 
@@ -61,6 +67,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music=""
         image="image_intouchable"
         listAnswerString="intouchable"/>
 
@@ -70,6 +77,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="image_jamesbond"
         listAnswerString="james bond"/>
 
@@ -79,6 +87,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music=""
         image="image_mariokart"
         listAnswerString="mario kart"/>
 
@@ -88,6 +97,7 @@
         emoji1=""
         emoji2=""
         emoji3=""
+        music=""
         image="image_strangerthings"
         listAnswerString="stranger things" />
 
