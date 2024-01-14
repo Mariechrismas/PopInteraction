@@ -19,16 +19,17 @@ object XMLReadFile {
         selectedCategories = categories
     }
 
-
     private fun createList(stringList: String): List<String> {
         return stringList.split(",").toMutableList()
     }
+
     fun readXmlDepixelObject(context: Context): MutableList<DepixelObject> {
         val dataObjects = mutableListOf<DepixelObject>()
         readXmlDepixelObjectsApp(context, dataObjects)
         readXmlDepixelObjectsLocal(context, dataObjects)
         return dataObjects
     }
+
     fun readXmlDepixelObjectsApp(context: Context, dataObjects:MutableList<DepixelObject>): MutableList<DepixelObject> {
         try {
             val xmlResourceId = context.resources.getIdentifier("data", "xml", context.packageName)
@@ -77,6 +78,7 @@ object XMLReadFile {
 
         return dataObjects
     }
+
     fun readXmlDepixelObjectsLocal(context: Context, dataObjects:MutableList<DepixelObject>): MutableList<DepixelObject> {
 
         try {
@@ -141,6 +143,7 @@ object XMLReadFile {
         readXmlEmojiObjectsLocal(context, dataObjects)
         return dataObjects
     }
+
     fun readXmlEmojiObjectsApp(context: Context, emojiObjects:MutableList<EmojiStoryObject>): MutableList<EmojiStoryObject> {
 
         try {
@@ -256,6 +259,7 @@ object XMLReadFile {
         readXmlGuessVoiceObjectsLocal(context, dataObjects)
         return dataObjects
     }
+
     fun readXmlGuessVoiceObjectsApp(context: Context, guessVoiceObject: MutableList<GuessVoiceObject>): MutableList<GuessVoiceObject> {
 
         try {
@@ -354,8 +358,6 @@ object XMLReadFile {
         }
         return guessVoiceObjects
     }
-
-
 
     fun readXmlDataObjectsLocal(context: Context, emojiObjects:MutableList<DataObject>): MutableList<DataObject> {
 

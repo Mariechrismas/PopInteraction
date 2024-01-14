@@ -8,6 +8,7 @@
         emoji2="🌅"
         emoji3="🦁"
         clue=""
+        music="app/src/main/res/raw/music_the_lion_king.mp3"
         image="app/src/main/res/drawable/image_leroilion"
         listAnswerString="ROI LION"/>
 
@@ -18,6 +19,7 @@
         emoji2="🎩"
         emoji3="🐧"
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_penguin"
         listAnswerString="Penguin"/>
 
@@ -28,6 +30,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_avatar"
         listAnswerString="avatar"/>
 
@@ -38,6 +41,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_dofus"
         listAnswerString="dofus"/>
 
@@ -48,6 +52,7 @@
         emoji2="🎩"
         emoji3="🐧"
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_friends"
         listAnswerString="friends"/>
 
@@ -58,6 +63,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_gardiensdelagalaxie"
         listAnswerString="gardien de la galaxie"/>
 
@@ -68,6 +74,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_intouchable"
         listAnswerString="intouchable"/>
 
@@ -78,6 +85,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_jamesbond"
         listAnswerString="james bond"/>
 
@@ -88,6 +96,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_mariokart"
         listAnswerString="mario kart"/>
 
@@ -98,6 +107,7 @@
         emoji2=""
         emoji3=""
         clue=""
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_strangerthings"
         listAnswerString="stranger things" />
 
