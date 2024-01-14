@@ -2,16 +2,14 @@ package com.example.popinteraction.parameter
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.popinteraction.CategoryObject
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
 
-class CategorieActivity : AppCompatActivity() {
+class CategoriyActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ToggleButtonAdapter
@@ -21,7 +19,7 @@ class CategorieActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_categorie)
+        setContentView(R.layout.activity_category)
 
         initialListCategory = listOf("Film", "Series", "Game", "Animal", "Actor", "Anime", "Cartoon", "Singer")
 
@@ -41,8 +39,6 @@ class CategorieActivity : AppCompatActivity() {
     }
 
     fun navigateToParameter(view: View) {
-        Log.d("SelectedCategories", "Selected Categories: $selectedCategories")
-
         XMLReadFile.initSelectedCategories(selectedCategories)
         val intent = Intent(this, ParameterActivity::class.java)
         intent.putStringArrayListExtra("selectedCategories", ArrayList(selectedCategories))

@@ -10,12 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
-import com.example.popinteraction.DataObject
+import com.example.popinteraction.DepixelObject
 import java.io.File
 import java.util.Locale
 
@@ -28,6 +26,7 @@ class DepixelimageActivity : AppCompatActivity() {
     private lateinit var stopToggleButton: ToggleButton
     private lateinit var submitToggleButton: ToggleButton
     private lateinit var nextToggleButton: ToggleButton
+    private lateinit var scoreView: TextView
     private var score = 0
     private var isTimerRunning = true
     private var pixelLevel = 100
@@ -36,8 +35,8 @@ class DepixelimageActivity : AppCompatActivity() {
     private val handler = Handler()
     private var startTime: Long = 0
     private var stopTime: Long = 0
-    private lateinit var dataObjects: List<DataObject>
-    private val shownImageIndices = HashSet<Int>()
+    private lateinit var dataObjects: List<DepixelObject>
+    private val shownImageCLue = HashSet<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +50,13 @@ class DepixelimageActivity : AppCompatActivity() {
         showNextImage()
 
         setButtonListeners()
+
+        scoreView.text = resources.getString(R.string.score) + ": " + score
+    }
+
+    fun navigateToDepixelMenu(view: View) {
+        val intent = Intent(this, DepixelimageMenu::class.java)
+        startActivity(intent)
     }
 
     private fun initializeViews() {
@@ -60,6 +66,7 @@ class DepixelimageActivity : AppCompatActivity() {
         stopToggleButton = findViewById(R.id.stop)
         submitToggleButton = findViewById(R.id.submit)
         nextToggleButton = findViewById(R.id.next)
+        scoreView = findViewById(R.id.score)
     }
 
     private fun setButtonListeners() {
@@ -110,6 +117,8 @@ class DepixelimageActivity : AppCompatActivity() {
 
         showToast("You earned $points points! Score: $score")
 
+        scoreView.text = resources.getString(R.string.score) + ": " + score
+
         answerEditText.text = null
 
         clueTextView.visibility = View.INVISIBLE
@@ -142,34 +151,28 @@ class DepixelimageActivity : AppCompatActivity() {
 
         handler.removeCallbacksAndMessages(null)
 
-        // Get a list of indices that haven't been shown yet
         val availableIndices = getAvailableIndices()
 
-        // If all images have been shown, reset the set
         if (availableIndices.isEmpty()) {
-            shownImageIndices.clear()
+            shownImageCLue.clear()
         }
 
-        // Randomly select an index from the available ones
         val randomIndex = availableIndices.shuffled().firstOrNull()
 
         if (randomIndex != null) {
             imageIndex = randomIndex + 1
             val currentDataObject = dataObjects[randomIndex]
-            shownImageIndices.add(randomIndex)
+            shownImageCLue.add(randomIndex)
 
-            // Utilize the image path directly from the XML file
             imageName = currentDataObject.image.substringAfterLast("/")
 
-            // Build the resource ID from the image path
             val imageResourceId = resources.getIdentifier(imageName, "drawable", packageName)
 
             if (imageResourceId != 0) {
-                // Load the image from the drawable resource
                 val originalBitmap = BitmapFactory.decodeResource(resources, imageResourceId)
                 imageView.setImageBitmap(originalBitmap)
 
-                val clueText = "This is a ${currentDataObject.categorie}"
+                val clueText = "This is a ${currentDataObject.clue}"
 
                 val pixelatedBitmap = Pixelisation.pixelateBitmap(originalBitmap, pixelLevel)
                 imageView.setImageBitmap(pixelatedBitmap)
@@ -188,18 +191,15 @@ class DepixelimageActivity : AppCompatActivity() {
 
                 imagesShown++
             } else {
-                // Load the image from the local path
                 val localImagePath = File(filesDir, "images/$imageName").absolutePath
 
-                // Check if the local image file exists
                 val localImageFile = File(localImagePath)
 
                 if (localImageFile.exists()) {
-                    // Load the image from the local path
                     val localBitmap = BitmapFactory.decodeFile(localImagePath)
                     imageView.setImageBitmap(localBitmap)
 
-                    val clueText = "This is a ${currentDataObject.categorie}"
+                    val clueText = "This is a ${currentDataObject.category}"
 
                     val pixelatedBitmap = Pixelisation.pixelateBitmap(localBitmap, pixelLevel)
                     imageView.setImageBitmap(pixelatedBitmap)
@@ -225,7 +225,7 @@ class DepixelimageActivity : AppCompatActivity() {
     }
 
     private fun getAvailableIndices(): List<Int> {
-        return (0 until dataObjects.size).filter { it !in shownImageIndices }
+        return (0 until dataObjects.size).filter { it !in shownImageCLue }
     }
 
     private val depixelizeImageRunnable = object : Runnable {
@@ -251,17 +251,9 @@ class DepixelimageActivity : AppCompatActivity() {
     }
 
     private fun showFinalScore() {
-        val alertDialogBuilder = AlertDialog.Builder(this, R.style.CustomDialog)
-        alertDialogBuilder.setTitle("Score:")
-        alertDialogBuilder.setMessage("Your final score is $score")
-        alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
-            dialog.dismiss()
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-
-        val alertDialog = alertDialogBuilder.create()
-        alertDialog.show()
+        val intent = Intent(this, DepixelimageScore::class.java)
+        intent.putExtra("Score", score.toString())
+        startActivity(intent)
     }
 
     private fun showToast(message: String) {

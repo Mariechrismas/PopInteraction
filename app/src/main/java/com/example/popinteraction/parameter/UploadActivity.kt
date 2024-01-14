@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
 import com.example.popinteraction.XMLWriter
-import com.example.popinteraction.DataObject
 import ImagesUpload
+import com.example.popinteraction.DataObject
 
 class UploadActivity : AppCompatActivity() {
     private lateinit var uploadsList: RecyclerView
@@ -96,7 +96,7 @@ class UploadActivity : AppCompatActivity() {
             dataObject.emoji1,
             dataObject.emoji2,
             dataObject.emoji3,
-            dataObject.categorie,
+            dataObject.category,
             dataObject.clue,
             dataObject.listAnswerString.joinToString(", ")
         )

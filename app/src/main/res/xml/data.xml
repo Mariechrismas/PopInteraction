@@ -3,7 +3,7 @@
 <resources>
     <object
         name="the_lion_king"
-        categorie="Film"
+        category="Film"
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
@@ -13,7 +13,7 @@
 
     <object
         name="Penguin"
-        categorie="Animal"
+        category="Animal"
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
@@ -23,7 +23,7 @@
 
     <object
         name="avatar"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
@@ -33,7 +33,7 @@
 
     <object
         name="dofus."
-        categorie="Game"
+        category="Game"
         emoji1=""
         emoji2=""
         emoji3=""
@@ -43,7 +43,7 @@
 
     <object
         name="friends"
-        categorie="Series"
+        category="Series"
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
@@ -53,7 +53,7 @@
 
     <object
         name="gardiens_de_la_galaxie"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
@@ -63,7 +63,7 @@
 
     <object
         name="intouchable"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
@@ -73,7 +73,7 @@
 
     <object
         name="james_bond"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
@@ -83,7 +83,7 @@
 
     <object
         name="mario_kart"
-        categorie="Game"
+        category="Game"
         emoji1=""
         emoji2=""
         emoji3=""
@@ -93,7 +93,7 @@
 
     <object
         name="stranger_things"
-        categorie="Series"
+        category="Series"
         emoji1=""
         emoji2=""
         emoji3=""

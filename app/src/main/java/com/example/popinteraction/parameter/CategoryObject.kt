@@ -1,4 +1,4 @@
-package com.example.popinteraction
+package com.example.popinteraction.parameter
 
 data class CategoryObject(
     val id: String,

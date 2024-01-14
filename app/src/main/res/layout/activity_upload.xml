@@ -20,18 +20,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063" />
 
+
     <ImageView
         android:id="@+id/back"
-        android:layout_width="55dp"
-        android:layout_height="52dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:onClick="navigateToParameter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/UploadsList"
