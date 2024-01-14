@@ -1,9 +1,9 @@
 package com.example.popinteraction.depixelimage
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -15,12 +15,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
-import com.example.popinteraction.emojistory.DataObject
+import com.example.popinteraction.DataObject
+import java.io.File
+import java.util.Locale
 
 class DepixelimageActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
-    private lateinit var imageName: String
+    private var imageName: String? = null
     private lateinit var clueTextView: TextView
     private lateinit var answerEditText: EditText
     private lateinit var stopToggleButton: ToggleButton
@@ -43,7 +45,7 @@ class DepixelimageActivity : AppCompatActivity() {
 
         initializeViews()
 
-        val xmlReadFile = XMLReadFile()
+        val xmlReadFile = XMLReadFile
         dataObjects = xmlReadFile.readXmlDataObjects(this)
 
         showNextImage()
@@ -85,8 +87,8 @@ class DepixelimageActivity : AppCompatActivity() {
     }
 
     private fun onSubmitButtonClicked() {
-        val userInput = answerEditText.text.toString().toLowerCase()
-        val answer = dataObjects[imageIndex - 1].listAnswerString[0].trim().toLowerCase()
+        val userInput = answerEditText.text.toString().lowercase(Locale.ROOT)
+        val answer = dataObjects[imageIndex - 1].listAnswerString[0].trim().lowercase(Locale.ROOT)
 
         if (userInput == answer) {
             handleCorrectAnswer()
@@ -152,31 +154,73 @@ class DepixelimageActivity : AppCompatActivity() {
         val randomIndex = availableIndices.shuffled().firstOrNull()
 
         if (randomIndex != null) {
+            imageIndex = randomIndex + 1
             val currentDataObject = dataObjects[randomIndex]
             shownImageIndices.add(randomIndex)
 
-            imageName = currentDataObject.image
-            val clueText = "This is a ${currentDataObject.categorie}"
+            // Utilize the image path directly from the XML file
+            imageName = currentDataObject.image.substringAfterLast("/")
 
-            val originalBitmap =
-                resources.getIdentifier(imageName, "drawable", packageName)
-            val pixelatedBitmap = Pixelisation.pixelateBitmap(resources, originalBitmap, pixelLevel)
+            // Build the resource ID from the image path
+            val imageResourceId = resources.getIdentifier(imageName, "drawable", packageName)
 
-            imageView.setImageBitmap(pixelatedBitmap)
+            if (imageResourceId != 0) {
+                // Load the image from the drawable resource
+                val originalBitmap = BitmapFactory.decodeResource(resources, imageResourceId)
+                imageView.setImageBitmap(originalBitmap)
 
-            handler.postDelayed({
-                clueTextView.text = clueText
-                clueTextView.visibility = View.VISIBLE
-                startTime = System.currentTimeMillis()
-            }, 10000)
+                val clueText = "This is a ${currentDataObject.categorie}"
 
-            isTimerRunning = true
+                val pixelatedBitmap = Pixelisation.pixelateBitmap(originalBitmap, pixelLevel)
+                imageView.setImageBitmap(pixelatedBitmap)
 
-            stopToggleButton.isChecked = false
+                handler.postDelayed({
+                    clueTextView.text = clueText
+                    clueTextView.visibility = View.VISIBLE
+                    startTime = System.currentTimeMillis()
+                }, 10000)
 
-            handler.postDelayed(depixelizeImageRunnable, 2000)
+                isTimerRunning = true
 
-            imagesShown++
+                stopToggleButton.isChecked = false
+
+                handler.postDelayed(depixelizeImageRunnable, 2000)
+
+                imagesShown++
+            } else {
+                // Load the image from the local path
+                val localImagePath = File(filesDir, "images/$imageName").absolutePath
+
+                // Check if the local image file exists
+                val localImageFile = File(localImagePath)
+
+                if (localImageFile.exists()) {
+                    // Load the image from the local path
+                    val localBitmap = BitmapFactory.decodeFile(localImagePath)
+                    imageView.setImageBitmap(localBitmap)
+
+                    val clueText = "This is a ${currentDataObject.categorie}"
+
+                    val pixelatedBitmap = Pixelisation.pixelateBitmap(localBitmap, pixelLevel)
+                    imageView.setImageBitmap(pixelatedBitmap)
+
+                    handler.postDelayed({
+                        clueTextView.text = clueText
+                        clueTextView.visibility = View.VISIBLE
+                        startTime = System.currentTimeMillis()
+                    }, 10000)
+
+                    isTimerRunning = true
+
+                    stopToggleButton.isChecked = false
+
+                    handler.postDelayed(depixelizeImageRunnable, 2000)
+
+                    imagesShown++
+                } else {
+                    Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -192,10 +236,14 @@ class DepixelimageActivity : AppCompatActivity() {
                 pixelLevel = 1
             }
 
-            val originalBitmap =
-                resources.getIdentifier(imageName, "drawable", packageName)
-            val pixelatedBitmap =
-                Pixelisation.pixelateBitmap(resources, originalBitmap, pixelLevel)
+            val originalBitmap = if (resources.getIdentifier(imageName, "drawable", packageName) != 0) {
+                BitmapFactory.decodeResource(resources, resources.getIdentifier(imageName, "drawable", packageName))
+            } else {
+                val localImagePath = File(filesDir, "images/$imageName").absolutePath
+                BitmapFactory.decodeFile(localImagePath)
+            }
+
+            val pixelatedBitmap = Pixelisation.pixelateBitmap(originalBitmap, pixelLevel)
             imageView.setImageBitmap(pixelatedBitmap)
 
             handler.postDelayed(this, 2000)
