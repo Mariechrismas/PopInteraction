@@ -1,6 +1,6 @@
 package com.example.popinteraction.guessthevoice
 
-import android.content.Intent
+import com.example.popinteraction.AudioPlayer
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
@@ -8,12 +8,8 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
-import android.media.MediaPlayer
 import android.view.View
-import android.widget.Chronometer
 import com.example.popinteraction.emojistory.DataObject
-import com.example.popinteraction.emojistory.EmojiStoryCurrentObject
-import com.example.popinteraction.emojistory.EmojiStoryScore
 import kotlin.random.Random
 
 class GuessVoiceActivity : AppCompatActivity() {
@@ -26,7 +22,8 @@ class GuessVoiceActivity : AppCompatActivity() {
     private var listOfDataObject: MutableList<DataObject> = mutableListOf()
     private var score = 0
     private var currentParty: Int = 0
-    private var mediaPlayer: MediaPlayer? = null
+    private val audioPlayer = AudioPlayer(this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,23 +59,19 @@ class GuessVoiceActivity : AppCompatActivity() {
 
     //Methode pour initialiser une partie
     fun initNewParty(){
-        theme.text = resources.getString(R.string.theme) + ": " + listOfDataObject[currentParty]
+        theme.text = resources.getString(R.string.theme) + ": " + listOfDataObject[currentParty].categorie
         displayScore.text = resources.getString(R.string.score) + ": " + score
         imageSolution.setImageResource(R.drawable.transparent_picture)
-        val audioPath = listOfDataObject[currentParty].music
-        mediaPlayer = MediaPlayer().apply {
-            setDataSource(audioPath)
-            prepare()
-        }
 
-        mediaPlayer?.start()
+        //audioPlayer.start(listOfDataObject[currentParty].music)
+        audioPlayer.start("/storage/self/primary/Music/music_the_lion_king.mp3")
     }
 
     //Methode appelé quand l'utilisateur essaye une reponse
     fun validateWord(view: View) {
         val userInput = answer.text.toString()
         if(listOfDataObject[currentParty].listAnswerString.contains(userInput)){
-
+            score++
         }
     }
 }
