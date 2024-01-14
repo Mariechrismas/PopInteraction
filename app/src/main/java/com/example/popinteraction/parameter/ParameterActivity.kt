@@ -23,8 +23,8 @@ class ParameterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun navigateToCategorie(view: View) {
-        val intent = Intent(this, CategorieActivity::class.java)
+    fun navigateToCategory(view: View) {
+        val intent = Intent(this, CategoriyActivity::class.java)
         startActivity(intent)
     }
 }

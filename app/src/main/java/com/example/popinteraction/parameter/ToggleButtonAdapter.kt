@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
-import com.example.popinteraction.CategoryObject
 import com.example.popinteraction.R
 
 class ToggleButtonAdapter(val categoryList: List<CategoryObject>) :

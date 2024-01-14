@@ -44,7 +44,7 @@ class XMLWriter(context: Context) {
         val objectElement = document.createElement("object")
 
         objectElement.setAttribute("name", name)
-        objectElement.setAttribute("categorie", category)
+        objectElement.setAttribute("category", category)
         objectElement.setAttribute("emoji1", emoji1)
         objectElement.setAttribute("emoji2", emoji2)
         objectElement.setAttribute("emoji3", emoji3)

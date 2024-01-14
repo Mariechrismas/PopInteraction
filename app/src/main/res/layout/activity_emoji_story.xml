@@ -6,18 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".EmojiStoryActivity">
+    tools:context=".emojistory.EmojiStoryActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="navigateToMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_delete"
-        android:onClick="navigateToMenu"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView
         android:id="@+id/title"
@@ -111,22 +111,22 @@
 
     <TextView
         android:id="@+id/score"
+        style="@style/TextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="248dp"
         android:gravity="right"
-        style="@style/TextStyle"
         android:text="Score: 0"
-        app:layout_constraintTop_toBottomOf="@id/indice"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.33" />
+        app:layout_constraintTop_toBottomOf="@id/indice" />
 
     <EditText
         android:id="@+id/selectionEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/AnswerInput"
+        android:layout_width="234dp"
+        android:layout_height="52dp"
         android:hint="@string/enter_text"
-        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/score" />

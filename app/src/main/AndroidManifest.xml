@@ -46,12 +46,15 @@
             android:name=".depixelimage.DepixelimageActivity"
             android:exported="true">
         </activity>
+        <activity android:name=".depixelimage.DepixelimageScore"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".parameter.ParameterActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".parameter.CategorieActivity"
+            android:name=".parameter.CategoriyActivity"
             android:exported="true">
         </activity>
         <activity
