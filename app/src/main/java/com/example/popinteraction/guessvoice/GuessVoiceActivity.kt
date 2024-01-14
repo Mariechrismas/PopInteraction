@@ -1,4 +1,4 @@
-package com.example.popinteraction.guessthevoice
+package com.example.popinteraction.guessvoice
 
 import android.content.Intent
 import com.example.popinteraction.AudioPlayer
@@ -11,7 +11,8 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
-import com.example.popinteraction.emojistory.DataObject
+import com.example.popinteraction.XMLReadFile
+import com.example.popinteraction.DataObject
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -24,7 +25,7 @@ class GuessVoiceActivity : AppCompatActivity() {
     private lateinit var timer: TextView
     private lateinit var solution: TextView
 
-    private var listOfDataObject: MutableList<DataObject> = mutableListOf()
+    private var listOfDataObject: MutableList<GuessVoiceObject> = mutableListOf()
     private var score = 0
     private var currentParty: Int = 0
     private val audioPlayer = AudioPlayer(this)
@@ -51,9 +52,8 @@ class GuessVoiceActivity : AppCompatActivity() {
     }
 
     private fun InitGame(numberOfLevel: Int){
-        val xmlReadFile = com.example.popinteraction.XMLReadFile()
-        val tmpListDataObjects = xmlReadFile.readXmlDataObjects(this)
-
+        val xmlReadFile = XMLReadFile
+        val tmpListDataObjects = xmlReadFile.readXmlGuessVoiceObjects(this)
         while(listOfDataObject.size != numberOfLevel && tmpListDataObjects.isNotEmpty()){
             val randomLevel = Random.nextInt(tmpListDataObjects.size)
             if(tmpListDataObjects[randomLevel].music.isNotEmpty()){
@@ -67,7 +67,7 @@ class GuessVoiceActivity : AppCompatActivity() {
     }
 
     fun initNewParty(){
-        theme.text = resources.getString(R.string.theme) + ": " + listOfDataObject[currentParty].categorie
+        theme.text = resources.getString(R.string.theme) + ": " + listOfDataObject[currentParty].category
         displayScore.text = resources.getString(R.string.score) + ": " + score
         imageSolution.setImageResource(R.drawable.transparent_picture)
         answer.setText("")

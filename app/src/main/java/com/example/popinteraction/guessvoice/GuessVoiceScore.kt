@@ -1,4 +1,4 @@
-package com.example.popinteraction.guessthevoice
+package com.example.popinteraction.guessvoice
 
 import android.content.Intent
 import android.os.Bundle

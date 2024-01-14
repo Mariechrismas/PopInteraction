@@ -27,14 +27,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".guessthevoice.GuessVoiceMenu"
+            android:name=".guessvoice.GuessVoiceMenu"
             android:exported="true">
         </activity>
         <activity
-            android:name=".guessthevoice.GuessVoiceActivity"
+            android:name=".guessvoice.GuessVoiceActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".guessthevoice.GuessVoiceScore"
+            android:name=".guessvoice.GuessVoiceScore"
             android:exported="true">
         </activity>
         <activity

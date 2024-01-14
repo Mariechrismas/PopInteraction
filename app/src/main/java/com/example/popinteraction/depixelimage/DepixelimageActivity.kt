@@ -44,7 +44,7 @@ class DepixelimageActivity : AppCompatActivity() {
         initializeViews()
 
         val xmlReadFile = XMLReadFile
-        dataObjects = xmlReadFile.readXmlDataObjects(this)
+        dataObjects = xmlReadFile.readXmlDepixelObject(this)
 
         showNextImage()
 
