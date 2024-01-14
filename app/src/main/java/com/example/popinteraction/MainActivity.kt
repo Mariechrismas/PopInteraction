@@ -1,15 +1,14 @@
 package com.example.popinteraction
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.depixelimage.DepixelimageMenu
 import com.example.popinteraction.parameter.ParameterActivity
+import com.example.popinteraction.emojistory.EmojiStoryFrontPage
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToEmojiStory(view: View) {
-        val intent = Intent(this, EmojiStoryActivity::class.java)
+        val intent = Intent(this, EmojiStoryFrontPage::class.java)
         startActivity(intent)
     }
 
