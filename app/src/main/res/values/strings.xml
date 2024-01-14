@@ -29,6 +29,10 @@
     <string name="close">Close</string>
     <string name="permission_denied">Permission denied</string>
     <string name="permission_denied_message">The application does not have permission to access the sound file</string>
+    <string name="timer">Timer :</string>
+    <string name="time_elapsed">Time elsapsed</string>
+    <string name="name">Name :</string>
+
 
 
 
