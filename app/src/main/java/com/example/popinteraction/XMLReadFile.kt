@@ -2,6 +2,7 @@ package com.example.popinteraction
 
 import android.content.Context
 import android.content.res.XmlResourceParser
+import com.example.popinteraction.depixelimage.DepixelObject
 import com.example.popinteraction.emojistory.EmojiStoryObject
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
@@ -289,8 +290,7 @@ object XMLReadFile {
                         }
 
                         XmlPullParser.END_TAG -> {
-                            if (xmlParser.name == "object" && currentDataObject != null &&
-                                currentDataObject.category in selectedCategories
+                            if (xmlParser.name == "object" && currentDataObject != null
                             ) {
                                 emojiObjects.add(currentDataObject)
                             }

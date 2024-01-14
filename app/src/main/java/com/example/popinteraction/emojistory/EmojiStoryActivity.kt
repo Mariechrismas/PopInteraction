@@ -1,14 +1,17 @@
 package com.example.popinteraction.emojistory
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
+import com.example.popinteraction.ShowImage
 import com.example.popinteraction.XMLReadFile
 import kotlin.random.Random
 
@@ -101,14 +104,20 @@ class EmojiStoryActivity : AppCompatActivity() {
                 calculateScore()
                 answer.setText(resources.getString(R.string.congratulation))
                 validateButton.text = resources.getString(R.string.next_party)
-                val resourceId = resources.getIdentifier(
-                    emojiStoryPartyObject.currentParty.image,
-                    "drawable",
-                    packageName
-                )
+                val resourceId = ShowImage.readAppImage(this, emojiStoryPartyObject.currentParty.image)
                 if (resourceId > 0) {
                     imageSolution.setImageResource(resourceId)
+                } else {
+                    val localImageFile =
+                        ShowImage.readLocalImage(this, emojiStoryPartyObject.currentParty.image)
+                    if (localImageFile.exists()) {
+                        val localBitmap = BitmapFactory.decodeFile(emojiStoryPartyObject.currentParty.image)
+                        imageSolution.setImageBitmap(localBitmap)
+                    } else {
+                        Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
 
                 emojiStoryPartyObject.currentParty.answerIsGood = true
             } else if (emojiStoryPartyObject.currentParty.numberOfEmojiDisplay < 4) {
