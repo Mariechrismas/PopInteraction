@@ -290,8 +290,7 @@ object XMLReadFile {
                         }
 
                         XmlPullParser.END_TAG -> {
-                            if (xmlParser.name == "object" && currentDataObject != null &&
-                                currentDataObject.category in selectedCategories
+                            if (xmlParser.name == "object" && currentDataObject != null
                             ) {
                                 emojiObjects.add(currentDataObject)
                             }
