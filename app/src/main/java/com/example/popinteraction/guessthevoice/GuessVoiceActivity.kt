@@ -31,7 +31,7 @@ class GuessVoiceActivity : AppCompatActivity() {
     private var countDownTimer: CountDownTimer? = null
     private val startTimeInMillis: Long = 20000
     private var currentMillisUntilFinished: Long = 0
-    private var partyEnd: Boolean = false
+    private var isPartyEnd: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,6 @@ class GuessVoiceActivity : AppCompatActivity() {
         InitGame(2)
     }
 
-    //On initialise les views
     private fun initializeViews() {
         validateButton = findViewById(R.id.validateButton)
         imageSolution = findViewById(R.id.imagesolution)
@@ -51,7 +50,6 @@ class GuessVoiceActivity : AppCompatActivity() {
         solution = findViewById(R.id.solution)
     }
 
-    //Methode pour initialiser le jeu. "numberOfLevel" correspond au nombre d'objet à deviner
     private fun InitGame(numberOfLevel: Int){
         val xmlReadFile = com.example.popinteraction.XMLReadFile()
         val tmpListDataObjects = xmlReadFile.readXmlDataObjects(this)
@@ -68,14 +66,13 @@ class GuessVoiceActivity : AppCompatActivity() {
         initNewParty()
     }
 
-    //Methode pour initialiser une partie
     fun initNewParty(){
         theme.text = resources.getString(R.string.theme) + ": " + listOfDataObject[currentParty].categorie
         displayScore.text = resources.getString(R.string.score) + ": " + score
         imageSolution.setImageResource(R.drawable.transparent_picture)
         answer.setText("")
         solution.text = ""
-        partyEnd = true
+        isPartyEnd = true
 
         resetTimer()
         audioPlayer.start(listOfDataObject[currentParty].music)
@@ -83,32 +80,22 @@ class GuessVoiceActivity : AppCompatActivity() {
         //audioPlayer.start("/storage/self/primary/Music/music_the_lion_king.mp3")
     }
 
-    //Methode pour calculer le score en fonction du temps écouler
     private fun calculateScore(millisUntilFinished: Long) {
         val secondsRemaining = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-        when {
-            secondsRemaining < 5 -> {
-                score += 1
-            }
-            secondsRemaining in 5..10 -> {
-                score += 2
-            }
-            secondsRemaining in 10..15 -> {
-                score += 3
-            }
-            secondsRemaining in 15..20 -> {
-                score += 4
-            }
+        score += when (secondsRemaining) {
+            in 0..5 -> 1
+            in 6..10 -> 2
+            in 11..15 -> 3
+            in 16..20 -> 4
+            else -> 0
         }
 
-        displayScore.text = resources.getString(R.string.score) + ": " + score
+        displayScore.text = resources.getString(R.string.score) + ": $score"
     }
 
-
-    //Methode appelé quand l'utilisateur essaye une reponse
     fun validateWord(view: View) {
         val userInput = answer.text.toString()
-        if (partyEnd){
+        if (isPartyEnd){
             currentParty++
             if(currentParty >= listOfDataObject.size) {
                 val intent = Intent(this, GuessVoiceScore::class.java)
@@ -125,12 +112,11 @@ class GuessVoiceActivity : AppCompatActivity() {
         }
     }
 
-    //Methode pour initialiser le timer
     private fun initTimer() {
         countDownTimer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
-                partyEnd = false
+                isPartyEnd = false
                 timer.text = resources.getString(R.string.timer) + String.format("%02d", seconds)
                 currentMillisUntilFinished = millisUntilFinished
             }
@@ -142,12 +128,10 @@ class GuessVoiceActivity : AppCompatActivity() {
         }
     }
 
-    //Methode pour démarer le chronométre
     private fun startTimer() {
         countDownTimer?.start()
     }
 
-    // Methode pour réinitialiser le timer
     private fun resetTimer() {
         countDownTimer?.cancel()
         initTimer()
@@ -158,7 +142,6 @@ class GuessVoiceActivity : AppCompatActivity() {
         countDownTimer?.cancel()
     }
 
-    //Methode pour retourner à la page précédente
     fun navigateToMenu(view: View) {
         audioPlayer.stop()
         val intent = Intent(this, GuessVoiceMenu::class.java)
@@ -166,7 +149,7 @@ class GuessVoiceActivity : AppCompatActivity() {
     }
 
     private fun partyIsEnd(){
-        partyEnd = true
+        isPartyEnd = true
         validateButton.text = resources.getString(R.string.next_party)
         val resourceId = resources.getIdentifier(
             listOfDataObject[currentParty].image,
