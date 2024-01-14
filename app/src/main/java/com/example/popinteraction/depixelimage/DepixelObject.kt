@@ -1,4 +1,4 @@
-package com.example.popinteraction
+package com.example.popinteraction.depixelimage
 
 open class DepixelObject(
         val name: String,

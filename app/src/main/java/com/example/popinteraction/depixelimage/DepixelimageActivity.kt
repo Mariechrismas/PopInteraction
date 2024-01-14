@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
-import com.example.popinteraction.DepixelObject
 import java.io.File
 import java.util.Locale
 

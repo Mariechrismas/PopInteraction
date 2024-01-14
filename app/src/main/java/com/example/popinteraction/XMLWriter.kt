@@ -11,13 +11,11 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
 class XMLWriter(context: Context) {
-
-    private val fileName = "data.xml"
     private val file: File
     private val document: Document
 
     init {
-        file = File(context.filesDir, fileName)
+        file = File(context.filesDir, "data.xml")
 
         document = if (file.exists()) {
             loadXmlDocument(file)

@@ -2,6 +2,7 @@ package com.example.popinteraction
 
 import android.content.Context
 import android.content.res.XmlResourceParser
+import com.example.popinteraction.depixelimage.DepixelObject
 import com.example.popinteraction.emojistory.EmojiStoryObject
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
