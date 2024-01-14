@@ -8,7 +8,7 @@
         emoji2="🌅"
         emoji3="🦁"
         clue=""
-        image="image_leroilion"
+        image="app/src/main/res/drawable/image_leroilion"
         listAnswerString="ROI LION"/>
 
     <object
@@ -18,7 +18,7 @@
         emoji2="🎩"
         emoji3="🐧"
         clue=""
-        image="image_penguin"
+        image="app/src/main/res/drawable/image_penguin"
         listAnswerString="Penguin"/>
 
     <object
@@ -28,7 +28,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_avatar"
+        image="app/src/main/res/drawable/image_avatar"
         listAnswerString="avatar"/>
 
     <object
@@ -38,7 +38,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_dofus"
+        image="app/src/main/res/drawable/image_dofus"
         listAnswerString="dofus"/>
 
     <object
@@ -48,7 +48,7 @@
         emoji2="🎩"
         emoji3="🐧"
         clue=""
-        image="image_friends"
+        image="app/src/main/res/drawable/image_friends"
         listAnswerString="friends"/>
 
     <object
@@ -58,7 +58,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_gardiensdelagalaxie"
+        image="app/src/main/res/drawable/image_gardiensdelagalaxie"
         listAnswerString="gardien de la galaxie"/>
 
     <object
@@ -68,7 +68,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_intouchable"
+        image="app/src/main/res/drawable/image_intouchable"
         listAnswerString="intouchable"/>
 
     <object
@@ -78,7 +78,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_jamesbond"
+        image="app/src/main/res/drawable/image_jamesbond"
         listAnswerString="james bond"/>
 
     <object
@@ -88,7 +88,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_mariokart"
+        image="app/src/main/res/drawable/image_mariokart"
         listAnswerString="mario kart"/>
 
     <object
@@ -98,7 +98,7 @@
         emoji2=""
         emoji3=""
         clue=""
-        image="image_strangerthings"
+        image="app/src/main/res/drawable/image_strangerthings"
         listAnswerString="stranger things" />
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.popinteraction.emojistory
+package com.example.popinteraction
 
 open class DataObject(
         val name: String,
@@ -6,6 +6,7 @@ open class DataObject(
         val emoji1: String,
         val emoji2: String,
         val emoji3: String,
+        val clue: String,
         val image: String,
         val listAnswerString: List<String>
 )

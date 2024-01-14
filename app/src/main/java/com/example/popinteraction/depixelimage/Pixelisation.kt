@@ -5,6 +5,8 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
+import androidx.core.content.res.ResourcesCompat
+
 object Pixelisation {
 
     fun pixelateBitmap(resources: Resources, resourceId: Int, pixelationLevel: Int): Bitmap {
@@ -24,18 +26,18 @@ object Pixelisation {
     }
 
     private fun getBitmapFromDrawable(resources: Resources, resourceId: Int): Bitmap {
-        val drawable = resources.getDrawable(resourceId, null)
+        val drawable = ResourcesCompat.getDrawable(resources, resourceId, null)
         if (drawable is BitmapDrawable) {
             return drawable.bitmap
         }
 
-        val width = if (drawable.intrinsicWidth <= 0) 1 else drawable.intrinsicWidth
-        val height = if (drawable.intrinsicHeight <= 0) 1 else drawable.intrinsicHeight
+        val width = if (drawable?.intrinsicWidth ?: 0 <= 0) 1 else drawable?.intrinsicWidth ?: 0
+        val height = if (drawable?.intrinsicHeight ?: 0 <= 0) 1 else drawable?.intrinsicHeight ?: 0
 
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
+        drawable?.setBounds(0, 0, canvas.width, canvas.height)
+        drawable?.draw(canvas)
 
         return bitmap
     }

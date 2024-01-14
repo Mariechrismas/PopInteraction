@@ -45,7 +45,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/emoji1Text2"
+            android:id="@+id/emoji1Text"
             style="@style/TextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/emoji1EditText2"
+            android:id="@+id/emoji1EditText"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
@@ -95,7 +95,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/emoji3Text2"
+            android:id="@+id/emoji3Text"
             style="@style/TextStyle"
 
             android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/emoji3EditText2"
+            android:id="@+id/emoji3EditText"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
@@ -131,11 +131,12 @@
 
         <Spinner
             android:id="@+id/spinnerCategory"
+            style="@style/SpinnerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            />
+            android:backgroundTint="#F57C00"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <LinearLayout
@@ -144,17 +145,24 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/imageText"
             style="@style/TextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/file_name"
+            android:text="Image"
             android:textSize="16sp" />
 
         <ImageView
+            android:id="@+id/imageDownload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <ImageView
             android:id="@+id/upload"
-            android:layout_width="104dp"
+            android:layout_width="130dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@android:drawable/ic_menu_upload" />
@@ -221,6 +229,7 @@
             style="@style/CustomButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="uploadData"
             android:text="@string/ok"
             android:textOff="@string/ok"
             android:textOn="@string/ok" />
@@ -237,4 +246,5 @@
     </LinearLayout>
 
 </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

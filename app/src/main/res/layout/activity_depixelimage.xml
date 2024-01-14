@@ -34,12 +34,11 @@
 
     <EditText
         android:id="@+id/Answer"
+        style="@style/AnswerInput"
         android:layout_width="215dp"
         android:layout_height="52dp"
-        android:background="#A8FF5722"
         android:ems="10"
         android:inputType="text"
-        android:textColor="#FFFFFF"
         android:hint="@string/answers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
