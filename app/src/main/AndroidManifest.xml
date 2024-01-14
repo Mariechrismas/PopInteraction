@@ -27,7 +27,12 @@
             android:name=".guessthevoice.GuessVoiceMenu"
             android:exported="true">
         </activity>
-        <activity android:name=".guessthevoice.GuessVoiceActivity">
+        <activity
+            android:name=".guessthevoice.GuessVoiceActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".guessthevoice.GuessVoiceScore"
+            android:exported="true">
         </activity>
         <activity
             android:name=".emojistory.EmojiStoryActivity"

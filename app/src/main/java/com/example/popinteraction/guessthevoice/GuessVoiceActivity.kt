@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.emojistory.DataObject
 import java.util.concurrent.TimeUnit
@@ -32,7 +31,7 @@ class GuessVoiceActivity : AppCompatActivity() {
     private var countDownTimer: CountDownTimer? = null
     private val startTimeInMillis: Long = 20000
     private var currentMillisUntilFinished: Long = 0
-    private var timeElapsed: Boolean = false
+    private var partyEnd: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +75,7 @@ class GuessVoiceActivity : AppCompatActivity() {
         imageSolution.setImageResource(R.drawable.transparent_picture)
         answer.setText("")
         solution.text = ""
+        partyEnd = true
 
         resetTimer()
         audioPlayer.start(listOfDataObject[currentParty].music)
@@ -86,7 +86,6 @@ class GuessVoiceActivity : AppCompatActivity() {
     //Methode pour calculer le score en fonction du temps écouler
     private fun calculateScore(millisUntilFinished: Long) {
         val secondsRemaining = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-
         when {
             secondsRemaining < 5 -> {
                 score += 1
@@ -101,24 +100,29 @@ class GuessVoiceActivity : AppCompatActivity() {
                 score += 4
             }
         }
+
+        displayScore.text = resources.getString(R.string.score) + ": " + score
     }
 
 
     //Methode appelé quand l'utilisateur essaye une reponse
     fun validateWord(view: View) {
         val userInput = answer.text.toString()
-        println("CurrentMillisUntilFinished: $currentMillisUntilFinished")
-
-        if (timeElapsed){
+        if (partyEnd){
             currentParty++
-            initNewParty()
-        }else if(listOfDataObject[currentParty].listAnswerString.any { it.trim().equals(userInput.trim(), ignoreCase = true) }) {
+            if(currentParty >= listOfDataObject.size) {
+                val intent = Intent(this, GuessVoiceScore::class.java)
+                intent.putExtra("ScoreGuessVoice", score.toString())
+                startActivity(intent)
+            }else{
+                initNewParty()
+            }
+        }else if(listOfDataObject[currentParty].listAnswerString.any { it.trim().equals(userInput.trim(), ignoreCase = true)}) {
             calculateScore(currentMillisUntilFinished)
-            currentParty++
-            initNewParty()
+            timer.text = resources.getString(R.string.congratulation    )
+            partyIsEnd()
+            answer.setText("")
         }
-
-        answer.setText("")
     }
 
     //Methode pour initialiser le timer
@@ -126,24 +130,14 @@ class GuessVoiceActivity : AppCompatActivity() {
         countDownTimer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
-                timeElapsed = false
+                partyEnd = false
                 timer.text = resources.getString(R.string.timer) + String.format("%02d", seconds)
                 currentMillisUntilFinished = millisUntilFinished
             }
 
             override fun onFinish() {
-                timeElapsed = true
                 timer.text = resources.getString(R.string.time_elapsed)
-                validateButton.text = resources.getString(R.string.next_party)
-                val resourceId = resources.getIdentifier(
-                    listOfDataObject[currentParty].image,
-                    "drawable",
-                    packageName
-                )
-                if (resourceId > 0) {
-                    imageSolution.setImageResource(resourceId)
-                }
-                audioPlayer.stop()
+                partyIsEnd()
             }
         }
     }
@@ -157,7 +151,11 @@ class GuessVoiceActivity : AppCompatActivity() {
     private fun resetTimer() {
         countDownTimer?.cancel()
         initTimer()
-        timer.text = "20" // Remettre le texte initial ici
+        timer.text = "20"
+    }
+
+    private fun stopTimer() {
+        countDownTimer?.cancel()
     }
 
     //Methode pour retourner à la page précédente
@@ -165,5 +163,20 @@ class GuessVoiceActivity : AppCompatActivity() {
         audioPlayer.stop()
         val intent = Intent(this, GuessVoiceMenu::class.java)
         startActivity(intent)
+    }
+
+    private fun partyIsEnd(){
+        partyEnd = true
+        validateButton.text = resources.getString(R.string.next_party)
+        val resourceId = resources.getIdentifier(
+            listOfDataObject[currentParty].image,
+            "drawable",
+            packageName
+        )
+        if (resourceId > 0) {
+            imageSolution.setImageResource(resourceId)
+        }
+        stopTimer()
+        audioPlayer.stop()
     }
 }
