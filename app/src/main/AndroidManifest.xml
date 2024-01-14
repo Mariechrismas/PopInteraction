@@ -4,13 +4,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="27" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icone"
         android:supportsRtl="true"
         android:theme="@style/Theme.PopInteraction"
         tools:targetApi="31">
@@ -50,6 +53,25 @@
         </activity>
         <activity
             android:name=".depixelimage.DepixelimageActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".depixelimage.DepixelimageScore"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.ParameterActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.CategoriyActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.UploadActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".parameter.UploadPopup"
             android:exported="true">
         </activity>
     </application>

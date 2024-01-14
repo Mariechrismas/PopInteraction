@@ -1,15 +1,18 @@
 package com.example.popinteraction.emojistory
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
+import com.example.popinteraction.ShowImage
+import com.example.popinteraction.XMLReadFile
 import kotlin.random.Random
 
 class EmojiStoryActivity : AppCompatActivity() {
@@ -28,13 +31,13 @@ class EmojiStoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emoji_story)
-        InitGame(2);
+        InitGame(10);
     }
 
     //Methode pour initialiser la party. "numberOfLevel" correspond au nombre d'EmojiStoryObject à deviner
     private fun InitGame(numberOfLevel: Int){
-        val xmlReadFile = XMLReadFile()
-        val emojiObjectsList = xmlReadFile.readXmlEmojiObjects(this)
+        val xmlReadFile = XMLReadFile
+        val emojiObjectsList = xmlReadFile.readXmlEmojieObjects(this)
 
         for(i in 0 until numberOfLevel){
             if (emojiObjectsList.isNotEmpty()){
@@ -70,9 +73,9 @@ class EmojiStoryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        theme.text = resources.getString(R.string.theme) + ": " + emojiStoryPartyObject.currentParty.categorie
+        theme.text = resources.getString(R.string.theme) + ": " + emojiStoryPartyObject.currentParty.category
         score.text = resources.getString(R.string.score) + ": " + emojiStoryPartyObject.score
-        displayEmoji1.text = emojiStoryPartyObject.currentParty.image1
+        displayEmoji1.text = emojiStoryPartyObject.currentParty.emoji1
         displayEmoji2.text = "❓"
         displayEmoji3.text = "❓"
         imageSolution.setImageResource(R.drawable.transparent_picture)
@@ -101,23 +104,29 @@ class EmojiStoryActivity : AppCompatActivity() {
                 calculateScore()
                 answer.setText(resources.getString(R.string.congratulation))
                 validateButton.text = resources.getString(R.string.next_party)
-                val resourceId = resources.getIdentifier(
-                    emojiStoryPartyObject.currentParty.responseImage,
-                    "drawable",
-                    packageName
-                )
+                val resourceId = ShowImage.readAppImage(this, emojiStoryPartyObject.currentParty.image)
                 if (resourceId > 0) {
                     imageSolution.setImageResource(resourceId)
+                } else {
+                    val localImageFile =
+                        ShowImage.readLocalImage(this, emojiStoryPartyObject.currentParty.image)
+                    if (localImageFile.exists()) {
+                        val localBitmap = BitmapFactory.decodeFile(emojiStoryPartyObject.currentParty.image)
+                        imageSolution.setImageBitmap(localBitmap)
+                    } else {
+                        Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
 
                 emojiStoryPartyObject.currentParty.answerIsGood = true
             } else if (emojiStoryPartyObject.currentParty.numberOfEmojiDisplay < 4) {
                 emojiStoryPartyObject.currentParty.numberOfEmojiDisplay++
                 when (emojiStoryPartyObject.currentParty.numberOfEmojiDisplay) {
-                    1 -> displayEmoji1.text = emojiStoryPartyObject.currentParty.image1
-                    2 -> displayEmoji2.text = emojiStoryPartyObject.currentParty.image2
-                    3 -> displayEmoji3.text = emojiStoryPartyObject.currentParty.image3
-                    4 -> indice.text = resources.getString(R.string.indice) + ": " + emojiStoryPartyObject.currentParty.indice
+                    1 -> displayEmoji1.text = emojiStoryPartyObject.currentParty.emoji1
+                    2 -> displayEmoji2.text = emojiStoryPartyObject.currentParty.emoji2
+                    3 -> displayEmoji3.text = emojiStoryPartyObject.currentParty.emoji3
+                    4 -> indice.text = resources.getString(R.string.indice) + ": " + emojiStoryPartyObject.currentParty.clue
                 }
             }
 

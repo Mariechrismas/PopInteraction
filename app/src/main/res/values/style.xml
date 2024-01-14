@@ -32,6 +32,13 @@
         <item name="android:textColorPrimary">@color/text</item>
     </style>
 
+    <style name="AnswerInput">
+        <item name="android:background">#A8FF5722</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 
+    <style name="SpinnerTextStyle">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>

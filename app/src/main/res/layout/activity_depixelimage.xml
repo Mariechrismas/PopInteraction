@@ -7,12 +7,25 @@
     android:background="#000000"
     tools:context=".depixelimage.DepixelimageActivity">
 
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="navigateToDepixelMenu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_delete" />
+
     <TextView
         android:id="@+id/clue"
         style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text=""
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/image"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,21 +42,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.167"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/Loading" />
+    *
+
+    <TextView
+        android:id="@+id/score"
+        style="@style/TextStyle"
+        android:layout_width="167dp"
+        android:layout_height="39dp"
+        android:text="Score: 0"
+        app:layout_constraintBottom_toTopOf="@+id/Answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.401"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/Answer"
+        style="@style/AnswerInput"
         android:layout_width="215dp"
         android:layout_height="52dp"
-        android:background="#A8FF5722"
         android:ems="10"
         android:inputType="text"
-        android:textColor="#FFFFFF"
+        android:hint="@string/answers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.172"
+        android:autofillHints="" />
 
     <ToggleButton
         android:id="@+id/submit"

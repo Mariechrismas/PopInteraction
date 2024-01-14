@@ -3,102 +3,102 @@
 <resources>
     <object
         name="the_lion_king"
-        categorie="Movie"
+        category="Film"
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
-        music="app/src/main/res/raw/music_the_lion_king.mp3"
-        image="image_leroilion"
+        clue=""
+        image="app/src/main/res/drawable/image_leroilion"
         listAnswerString="ROI LION"/>
 
     <object
         name="Penguin"
-        categorie="Animal"
+        category="Animal"
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
-        music=""
-        image="image_penguin"
+        clue=""
+        image="app/src/main/res/drawable/image_penguin"
         listAnswerString="Penguin"/>
 
     <object
         name="avatar"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
-        music=""
-        image="image_avatar"
+        clue=""
+        image="app/src/main/res/drawable/image_avatar"
         listAnswerString="avatar"/>
 
     <object
         name="dofus."
-        categorie="Jeux"
+        category="Game"
         emoji1=""
         emoji2=""
         emoji3=""
-        music=""
-        image="image_dofus"
+        clue=""
+        image="app/src/main/res/drawable/image_dofus"
         listAnswerString="dofus"/>
 
     <object
         name="friends"
-        categorie="Film"
+        category="Series"
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
-        music=""
-        image="image_friends"
+        clue=""
+        image="app/src/main/res/drawable/image_friends"
         listAnswerString="friends"/>
 
     <object
         name="gardiens_de_la_galaxie"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
-        music=""
-        image="image_gardiensdelagalaxie"
+        clue=""
+        image="app/src/main/res/drawable/image_gardiensdelagalaxie"
         listAnswerString="gardien de la galaxie"/>
 
     <object
         name="intouchable"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
-        music=""
-        image="image_intouchable"
+        clue=""
+        image="app/src/main/res/drawable/image_intouchable"
         listAnswerString="intouchable"/>
 
     <object
         name="james_bond"
-        categorie="Film"
+        category="Film"
         emoji1=""
         emoji2=""
         emoji3=""
-        music="app/src/main/res/raw/music_james_bond.mp3"
-        image="image_jamesbond"
+        clue=""
+        image="app/src/main/res/drawable/image_jamesbond"
         listAnswerString="james bond"/>
 
     <object
         name="mario_kart"
-        categorie="Jeux"
+        category="Game"
         emoji1=""
         emoji2=""
         emoji3=""
-        music=""
-        image="image_mariokart"
+        clue=""
+        image="app/src/main/res/drawable/image_mariokart"
         listAnswerString="mario kart"/>
 
     <object
         name="stranger_things"
-        categorie="Serie"
+        category="Series"
         emoji1=""
         emoji2=""
         emoji3=""
-        music=""
-        image="image_strangerthings"
+        clue=""
+        image="app/src/main/res/drawable/image_strangerthings"
         listAnswerString="stranger things" />
 
 </resources>

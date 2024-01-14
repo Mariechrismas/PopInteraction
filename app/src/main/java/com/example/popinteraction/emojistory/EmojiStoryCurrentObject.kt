@@ -2,24 +2,24 @@ package com.example.popinteraction.emojistory
 
 open class EmojiStoryCurrentObject (
     name: String,
-    categorie: String,
+    category: String,
     image1: String,
     image2: String,
     image3: String,
-    indice: String,
+    clue: String,
     responseImage: String,
     listAnswerString: List<String>,
     var answerIsGood: Boolean = false,
     var numberOfEmojiDisplay: Int = 1
-) : EmojiStoryObject(name, categorie, image1, image2, image3, indice , responseImage, listAnswerString){
+) : EmojiStoryObject(name, category, image1, image2, image3, clue , responseImage, listAnswerString){
     constructor(emojiStoryObject: EmojiStoryObject) : this(
         emojiStoryObject.name,
-        emojiStoryObject.categorie,
-        emojiStoryObject.image1,
-        emojiStoryObject.image2,
-        emojiStoryObject.image3,
-        emojiStoryObject.indice,
-        emojiStoryObject.responseImage,
+        emojiStoryObject.category,
+        emojiStoryObject.emoji1,
+        emojiStoryObject.emoji2,
+        emojiStoryObject.emoji3,
+        emojiStoryObject.clue,
+        emojiStoryObject.image,
         emojiStoryObject.listAnswerString
     )
     constructor() : this("", "", "", "", "", "", "", emptyList())

@@ -5,32 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".depixelimage.DepixelimageMenu">
+    tools:context=".parameter.ParameterActivity">
 
     <TextView
         android:id="@+id/title"
-        style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/depixelimage"
-        app:layout_constraintBottom_toTopOf="@+id/playButton"
+        android:text="@string/parameter"
+        style="@style/TitleStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginTop="4dp"
         android:onClick="navigateToMenu"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <ToggleButton
@@ -39,9 +38,9 @@
         android:layout_width="139dp"
         android:layout_height="95dp"
         android:layout_marginBottom="24dp"
-        android:onClick="navigateToPlayDepixelimage"
-        android:text="@string/play"
-        android:textOff="@string/play"
+        android:onClick="navigateToCategory"
+        android:text="@string/category"
+        android:textOff="@string/category"
         android:textOn="@string/Loading"
         app:layout_constraintBottom_toTopOf="@+id/rulesButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,10 +52,10 @@
         android:layout_width="134dp"
         android:layout_height="97dp"
         android:layout_marginBottom="320dp"
-        android:text="@string/play"
-        android:textOff="@string/rules"
-        android:textOn="@string/rules"
-        android:onClick="showRulesPopup"
+        android:text="@string/upload"
+        android:textOff="@string/upload"
+        android:textOn="@string/Loading"
+        android:onClick="navigateToUpload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

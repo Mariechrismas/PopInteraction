@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".emojistory.EmojiStoryFrontPage">
+    tools:context=".parameter.UploadActivity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/emoji_story"
+        android:text="@string/upload"
         style="@style/TitleStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,47 +20,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063" />
 
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/back"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="4dp"
-        android:onClick="navigateToMenu"
+        android:onClick="navigateToParameter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete" />
 
-    <ToggleButton
-        android:id="@+id/playButton"
-        style="@style/CustomButtonStyle"
-        android:layout_width="139dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/play"
-        android:textOff="@string/play"
-        android:textOn="@string/Loading"
-        android:onClick="play"
-        app:layout_constraintBottom_toTopOf="@+id/rulesButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
-
-    <ToggleButton
-        android:id="@+id/rulesButton"
-        style="@style/CustomButtonStyle"
-        android:layout_width="134dp"
-        android:layout_height="97dp"
-        android:layout_marginBottom="320dp"
-        android:text="@string/play"
-        android:textOff="@string/rules"
-        android:textOn="@string/rules"
-        android:onClick="showRulesPopup"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/UploadsList"
+        android:layout_width="407dp"
+        android:layout_height="747dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintVertical_bias="0.829" />
+
+    <ToggleButton
+        android:id="@+id/upload"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upload"
+        android:textOff="@string/upload"
+        android:textOn="@string/upload"
+        android:onClick="popupUpload"
+        app:layout_constraintBottom_toBottomOf="@+id/UploadsList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

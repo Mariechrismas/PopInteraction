@@ -1,31 +1,31 @@
 package com.example.popinteraction.depixelimage
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popinteraction.MainActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
-import com.example.popinteraction.emojistory.DataObject
+import java.io.File
+import java.util.Locale
 
 class DepixelimageActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
-    private lateinit var imageName: String
+    private var imageName: String? = null
     private lateinit var clueTextView: TextView
     private lateinit var answerEditText: EditText
     private lateinit var stopToggleButton: ToggleButton
     private lateinit var submitToggleButton: ToggleButton
     private lateinit var nextToggleButton: ToggleButton
+    private lateinit var scoreView: TextView
     private var score = 0
     private var isTimerRunning = true
     private var pixelLevel = 100
@@ -34,8 +34,8 @@ class DepixelimageActivity : AppCompatActivity() {
     private val handler = Handler()
     private var startTime: Long = 0
     private var stopTime: Long = 0
-    private lateinit var dataObjects: List<DataObject>
-    private val shownImageIndices = HashSet<Int>()
+    private lateinit var dataObjects: List<DepixelObject>
+    private val shownImageCLue = HashSet<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +43,19 @@ class DepixelimageActivity : AppCompatActivity() {
 
         initializeViews()
 
-        val xmlReadFile = XMLReadFile()
+        val xmlReadFile = XMLReadFile
         dataObjects = xmlReadFile.readXmlDataObjects(this)
 
         showNextImage()
 
         setButtonListeners()
+
+        scoreView.text = resources.getString(R.string.score) + ": " + score
+    }
+
+    fun navigateToDepixelMenu(view: View) {
+        val intent = Intent(this, DepixelimageMenu::class.java)
+        startActivity(intent)
     }
 
     private fun initializeViews() {
@@ -58,6 +65,7 @@ class DepixelimageActivity : AppCompatActivity() {
         stopToggleButton = findViewById(R.id.stop)
         submitToggleButton = findViewById(R.id.submit)
         nextToggleButton = findViewById(R.id.next)
+        scoreView = findViewById(R.id.score)
     }
 
     private fun setButtonListeners() {
@@ -85,8 +93,8 @@ class DepixelimageActivity : AppCompatActivity() {
     }
 
     private fun onSubmitButtonClicked() {
-        val userInput = answerEditText.text.toString().toLowerCase()
-        val answer = dataObjects[imageIndex - 1].listAnswerString[0].trim().toLowerCase()
+        val userInput = answerEditText.text.toString().lowercase(Locale.ROOT)
+        val answer = dataObjects[imageIndex - 1].listAnswerString[0].trim().lowercase(Locale.ROOT)
 
         if (userInput == answer) {
             handleCorrectAnswer()
@@ -107,6 +115,8 @@ class DepixelimageActivity : AppCompatActivity() {
         score += points
 
         showToast("You earned $points points! Score: $score")
+
+        scoreView.text = resources.getString(R.string.score) + ": " + score
 
         answerEditText.text = null
 
@@ -140,48 +150,81 @@ class DepixelimageActivity : AppCompatActivity() {
 
         handler.removeCallbacksAndMessages(null)
 
-        // Get a list of indices that haven't been shown yet
         val availableIndices = getAvailableIndices()
 
-        // If all images have been shown, reset the set
         if (availableIndices.isEmpty()) {
-            shownImageIndices.clear()
+            shownImageCLue.clear()
         }
 
-        // Randomly select an index from the available ones
         val randomIndex = availableIndices.shuffled().firstOrNull()
 
         if (randomIndex != null) {
+            imageIndex = randomIndex + 1
             val currentDataObject = dataObjects[randomIndex]
-            shownImageIndices.add(randomIndex)
+            shownImageCLue.add(randomIndex)
 
-            imageName = currentDataObject.image
-            val clueText = "This is a ${currentDataObject.categorie}"
+            imageName = currentDataObject.image.substringAfterLast("/")
 
-            val originalBitmap =
-                resources.getIdentifier(imageName, "drawable", packageName)
-            val pixelatedBitmap = Pixelisation.pixelateBitmap(resources, originalBitmap, pixelLevel)
+            val imageResourceId = resources.getIdentifier(imageName, "drawable", packageName)
 
-            imageView.setImageBitmap(pixelatedBitmap)
+            if (imageResourceId != 0) {
+                val originalBitmap = BitmapFactory.decodeResource(resources, imageResourceId)
+                imageView.setImageBitmap(originalBitmap)
 
-            handler.postDelayed({
-                clueTextView.text = clueText
-                clueTextView.visibility = View.VISIBLE
-                startTime = System.currentTimeMillis()
-            }, 10000)
+                val clueText = "This is a ${currentDataObject.clue}"
 
-            isTimerRunning = true
+                val pixelatedBitmap = Pixelisation.pixelateBitmap(originalBitmap, pixelLevel)
+                imageView.setImageBitmap(pixelatedBitmap)
 
-            stopToggleButton.isChecked = false
+                handler.postDelayed({
+                    clueTextView.text = clueText
+                    clueTextView.visibility = View.VISIBLE
+                    startTime = System.currentTimeMillis()
+                }, 10000)
 
-            handler.postDelayed(depixelizeImageRunnable, 2000)
+                isTimerRunning = true
 
-            imagesShown++
+                stopToggleButton.isChecked = false
+
+                handler.postDelayed(depixelizeImageRunnable, 2000)
+
+                imagesShown++
+            } else {
+                val localImagePath = File(filesDir, "images/$imageName").absolutePath
+
+                val localImageFile = File(localImagePath)
+
+                if (localImageFile.exists()) {
+                    val localBitmap = BitmapFactory.decodeFile(localImagePath)
+                    imageView.setImageBitmap(localBitmap)
+
+                    val clueText = "This is a ${currentDataObject.category}"
+
+                    val pixelatedBitmap = Pixelisation.pixelateBitmap(localBitmap, pixelLevel)
+                    imageView.setImageBitmap(pixelatedBitmap)
+
+                    handler.postDelayed({
+                        clueTextView.text = clueText
+                        clueTextView.visibility = View.VISIBLE
+                        startTime = System.currentTimeMillis()
+                    }, 10000)
+
+                    isTimerRunning = true
+
+                    stopToggleButton.isChecked = false
+
+                    handler.postDelayed(depixelizeImageRunnable, 2000)
+
+                    imagesShown++
+                } else {
+                    Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
     private fun getAvailableIndices(): List<Int> {
-        return (0 until dataObjects.size).filter { it !in shownImageIndices }
+        return (0 until dataObjects.size).filter { it !in shownImageCLue }
     }
 
     private val depixelizeImageRunnable = object : Runnable {
@@ -192,10 +235,14 @@ class DepixelimageActivity : AppCompatActivity() {
                 pixelLevel = 1
             }
 
-            val originalBitmap =
-                resources.getIdentifier(imageName, "drawable", packageName)
-            val pixelatedBitmap =
-                Pixelisation.pixelateBitmap(resources, originalBitmap, pixelLevel)
+            val originalBitmap = if (resources.getIdentifier(imageName, "drawable", packageName) != 0) {
+                BitmapFactory.decodeResource(resources, resources.getIdentifier(imageName, "drawable", packageName))
+            } else {
+                val localImagePath = File(filesDir, "images/$imageName").absolutePath
+                BitmapFactory.decodeFile(localImagePath)
+            }
+
+            val pixelatedBitmap = Pixelisation.pixelateBitmap(originalBitmap, pixelLevel)
             imageView.setImageBitmap(pixelatedBitmap)
 
             handler.postDelayed(this, 2000)
@@ -203,17 +250,9 @@ class DepixelimageActivity : AppCompatActivity() {
     }
 
     private fun showFinalScore() {
-        val alertDialogBuilder = AlertDialog.Builder(this, R.style.CustomDialog)
-        alertDialogBuilder.setTitle("Score:")
-        alertDialogBuilder.setMessage("Your final score is $score")
-        alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
-            dialog.dismiss()
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-
-        val alertDialog = alertDialogBuilder.create()
-        alertDialog.show()
+        val intent = Intent(this, DepixelimageScore::class.java)
+        intent.putExtra("Score", score.toString())
+        startActivity(intent)
     }
 
     private fun showToast(message: String) {
