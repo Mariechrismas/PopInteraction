@@ -161,8 +161,8 @@ class GuessVoiceActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show()
             }
-            stopTimer()
-            audioPlayer.stop()
         }
+        stopTimer()
+        audioPlayer.stop()
     }
 }
