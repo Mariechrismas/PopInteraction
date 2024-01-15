@@ -57,7 +57,9 @@ class EmojiStoryActivity : AppCompatActivity() {
         displayEmoji2 = findViewById(R.id.emoji2)
         displayEmoji3 = findViewById(R.id.emoji3)
         indice = findViewById(R.id.indice)
-        initNewParty()
+        if(emojiStoryPartyObject.levelList.isNotEmpty()){
+            initNewParty()
+        }
     }
 
     //On initialise une nouvelle party
@@ -99,9 +101,9 @@ class EmojiStoryActivity : AppCompatActivity() {
         if(emojiStoryPartyObject.currentParty.answerIsGood){
             initNewParty()
         }else {
-            if (emojiStoryPartyObject.currentParty.listAnswerString.contains(userInput.toUpperCase()) || emojiStoryPartyObject.currentParty.numberOfEmojiDisplay >= 4) {
-                emojiStoryPartyObject.currentParty.numberOfEmojiDisplay++
+            if (emojiStoryPartyObject.currentParty.listAnswerString.any { it.trim().equals(userInput.trim(), ignoreCase = true)} || emojiStoryPartyObject.currentParty.numberOfEmojiDisplay >= 4) {
                 calculateScore()
+                emojiStoryPartyObject.currentParty.numberOfEmojiDisplay++
                 answer.setText(resources.getString(R.string.congratulation))
                 validateButton.text = resources.getString(R.string.next_party)
                 val resourceId = ShowImage.readAppImage(this, emojiStoryPartyObject.currentParty.image)
