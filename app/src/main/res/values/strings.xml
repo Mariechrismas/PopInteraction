@@ -9,7 +9,7 @@
     <string name="rules">Rules</string>
     <string name="rules_popup_title">Rules of the game</string>
     <string name="rules_depixelimage">In DepixelImage, players are challenged to guess an image that gradually depixelates. The main goal is to recognize the image in the process of restoration and provide an accurate response. Over time, the image becomes clearer, allowing players to observe carefully and use their knowledge to identify the subject or scene depicted.\n\nTo play successfully, participants need to be quick in their observation and clever in their deductions. The key to success lies in the ability to recognize the depixelated image before it is completely restored. In other words, it\'s a challenge that tests players\' visual acuity and memory.</string>
-    <string name="rules_guess_voice">OWO</string>
+    <string name="rules_guess_voice">In the game Guess the Voice, the players objective is to succeed in guessing the origin of the audio extract within a given time. The audio extract can come from different sources: film, show, song, animal cries or any other audio media.To do this, the user has the audio extract and the theme to which the extract relates, he must then note the solution in the form field and validate.</string>
     <string name="rules_emoji_story">In EmojiStory, player are challenged to guess subject, with like clue 3 emoji display after each error and one clue and the theme. The score is calculate in function of the numbers of this errors. </string>
     <string name="validate">Validate</string>
     <string name="enter_text">Enter your answer</string>
