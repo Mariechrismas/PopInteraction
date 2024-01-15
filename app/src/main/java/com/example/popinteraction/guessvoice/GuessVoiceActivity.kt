@@ -1,6 +1,7 @@
 package com.example.popinteraction.guessvoice
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import com.example.popinteraction.AudioPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -8,11 +9,13 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
 import com.example.popinteraction.DataObject
+import com.example.popinteraction.ShowImage
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -38,7 +41,7 @@ class GuessVoiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_voice)
         initializeViews()
-        InitGame(2)
+        InitGame(10)
     }
 
     private fun initializeViews() {
@@ -77,16 +80,15 @@ class GuessVoiceActivity : AppCompatActivity() {
         resetTimer()
         audioPlayer.start(listOfDataObject[currentParty].music)
         startTimer()
-        //audioPlayer.start("/storage/self/primary/Music/music_the_lion_king.mp3")
     }
 
     private fun calculateScore(millisUntilFinished: Long) {
         val secondsRemaining = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
         score += when (secondsRemaining) {
             in 0..5 -> 1
-            in 6..10 -> 2
-            in 11..15 -> 3
-            in 16..20 -> 4
+            in 5..10 -> 2
+            in 10..15 -> 3
+            in 15..20 -> 4
             else -> 0
         }
 
@@ -148,18 +150,23 @@ class GuessVoiceActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun partyIsEnd(){
+    private fun partyIsEnd() {
         isPartyEnd = true
         validateButton.text = resources.getString(R.string.next_party)
-        val resourceId = resources.getIdentifier(
-            listOfDataObject[currentParty].image,
-            "drawable",
-            packageName
-        )
+        val resourceId = ShowImage.readAppImage(this, listOfDataObject[currentParty].image)
         if (resourceId > 0) {
             imageSolution.setImageResource(resourceId)
+        } else {
+            val localImageFile =
+                ShowImage.readLocalImage(this, listOfDataObject[currentParty].image)
+            if (localImageFile.exists()) {
+                val localBitmap = BitmapFactory.decodeFile(listOfDataObject[currentParty].image)
+                imageSolution.setImageBitmap(localBitmap)
+            } else {
+                Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show()
+            }
+            stopTimer()
+            audioPlayer.stop()
         }
-        stopTimer()
-        audioPlayer.stop()
     }
 }

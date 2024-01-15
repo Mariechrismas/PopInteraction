@@ -3,6 +3,7 @@ package com.example.popinteraction
 import android.app.AlertDialog
 import android.content.Context
 import android.media.MediaPlayer
+import java.io.File
 import java.io.IOException
 
 class AudioPlayer(private val context: Context) {
@@ -23,14 +24,7 @@ class AudioPlayer(private val context: Context) {
                     showFileNotFoundDialog()
                 }
             } else {
-                if (context.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                    mediaPlayer = MediaPlayer()
-                    mediaPlayer?.setDataSource(filePath)
-                    mediaPlayer?.prepare()
-                    mediaPlayer?.start()
-                } else {
-                    permissionDeniedDialog()
-                }
+               //Recupération de fichiers sonore dans le telephone
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -39,7 +33,6 @@ class AudioPlayer(private val context: Context) {
         }
     }
 
-    //On arrete l'extrait sonore si il y en as un lancé
     fun stop() {
         mediaPlayer?.stop()
         mediaPlayer?.reset()
@@ -47,7 +40,6 @@ class AudioPlayer(private val context: Context) {
         mediaPlayer = null
     }
 
-    // Afficher un popup pour informer l'utilisateur que le fichier sonore est inexistant
     private fun showFileNotFoundDialog() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context.resources.getString(R.string.no_sound_file))
@@ -56,7 +48,6 @@ class AudioPlayer(private val context: Context) {
             .show()
     }
 
-    // Afficher un popup pour informer l'utilisateur que le fichier sonore est inexistant
     private fun permissionDeniedDialog() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context.resources.getString(R.string.permission_denied))
