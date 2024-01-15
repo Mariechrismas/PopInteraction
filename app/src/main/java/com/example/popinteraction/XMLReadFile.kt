@@ -12,9 +12,8 @@ import java.io.FileInputStream
 import java.io.IOException
 
 object XMLReadFile {
-    private var selectedCategories = emptyList<String>()
+    private var selectedCategories = listOf("Film", "Series", "Game", "Animal", "Actor", "Anime", "Cartoon", "Singer")
     fun initSelectedCategories(categories: List<String>) {
-        selectedCategories = listOf("Film", "Series", "Game", "Animal", "Actor", "Anime", "Cartoon", "Singer")
         selectedCategories = categories
     }
 
@@ -255,7 +254,7 @@ object XMLReadFile {
     fun readXmlGuessVoiceObjects(context: Context): MutableList<GuessVoiceObject> {
         val dataObjects = mutableListOf<GuessVoiceObject>()
         readXmlGuessVoiceObjectsApp(context, dataObjects)
-        readXmlGuessVoiceObjectsLocal(context, dataObjects)
+        //readXmlGuessVoiceObjectsLocal(context, dataObjects)
         return dataObjects
     }
 
@@ -386,7 +385,7 @@ object XMLReadFile {
                                         emoji3 = xmlParser.getAttributeValue(null, "emoji3"),
                                         image = xmlParser.getAttributeValue(null, "image"),
                                         clue= xmlParser.getAttributeValue(null, "clue"),
-                                        music= xmlParser.getAttributeValue(null,"music"),
+                                        music= "TODO",
                                         listAnswerString = createList(xmlParser.getAttributeValue(null, "listAnswerString"))
                                     )
                                 }
