@@ -12,10 +12,9 @@ import java.io.FileInputStream
 import java.io.IOException
 
 object XMLReadFile {
-    private var selectedCategories =
-        listOf("Film", "Series", "Game", "Animal", "Actor", "Anime", "Cartoon", "Singer")
-
+    private var selectedCategories = emptyList<String>()
     fun initSelectedCategories(categories: List<String>) {
+        selectedCategories = listOf("Film", "Series", "Game", "Animal", "Actor", "Anime", "Cartoon", "Singer")
         selectedCategories = categories
     }
 
