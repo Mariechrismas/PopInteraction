@@ -1,15 +1,17 @@
-package com.example.popinteraction
+package com.example.popinteraction.guessvoice
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.popinteraction.MainActivity
+import com.example.popinteraction.R
 
-class GuessVoiceActivity : AppCompatActivity(){
+class GuessVoiceMenu : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_guess_voice)
+        setContentView(R.layout.activity_guess_voice_menu)
     }
 
     fun navigateToMenu(view: View) {
@@ -27,5 +29,10 @@ class GuessVoiceActivity : AppCompatActivity(){
 
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
+    }
+
+    fun play(view: View){
+        val intent = Intent(this, GuessVoiceActivity::class.java)
+        startActivity(intent)
     }
 }

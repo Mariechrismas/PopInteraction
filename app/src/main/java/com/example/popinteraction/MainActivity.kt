@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.depixelimage.DepixelimageMenu
-import com.example.popinteraction.parameter.ParameterActivity
 import com.example.popinteraction.emojistory.EmojiStoryFrontPage
+import com.example.popinteraction.guessvoice.GuessVoiceMenu
+import com.example.popinteraction.parameter.ParameterActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToGuessVoice(view: View) {
-        val intent = Intent(this, GuessVoiceActivity::class.java)
+        val intent = Intent(this, GuessVoiceMenu::class.java)
         startActivity(intent)
     }
 }

@@ -44,7 +44,7 @@ class DepixelimageActivity : AppCompatActivity() {
         initializeViews()
 
         val xmlReadFile = XMLReadFile
-        dataObjects = xmlReadFile.readXmlDataObjects(this)
+        dataObjects = xmlReadFile.readXmlDepixelObject(this)
 
         showNextImage()
 
@@ -94,9 +94,8 @@ class DepixelimageActivity : AppCompatActivity() {
 
     private fun onSubmitButtonClicked() {
         val userInput = answerEditText.text.toString().lowercase(Locale.ROOT)
-        val answer = dataObjects[imageIndex - 1].listAnswerString[0].trim().lowercase(Locale.ROOT)
 
-        if (userInput == answer) {
+        if(dataObjects[imageIndex -1].listAnswerString.any { it.trim().equals(userInput.trim(), ignoreCase = true)}) {
             handleCorrectAnswer()
         } else {
             answerEditText.setBackgroundColor(resources.getColor(android.R.color.holo_red_dark, null))

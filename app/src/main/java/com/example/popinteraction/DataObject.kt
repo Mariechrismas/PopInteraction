@@ -7,6 +7,7 @@ open class DataObject(
     val emoji2: String,
     val emoji3: String,
     val clue: String,
+    val music: String,
     val image: String,
     val listAnswerString: List<String>
 )

@@ -7,7 +7,8 @@
         emoji1="🎶"
         emoji2="🌅"
         emoji3="🦁"
-        clue=""
+        clue="Disney"
+        music="app/src/main/res/raw/music_the_lion_king.mp3"
         image="app/src/main/res/drawable/image_leroilion"
         listAnswerString="ROI LION"/>
 
@@ -17,87 +18,96 @@
         emoji1="❄️"
         emoji2="🎩"
         emoji3="🐧"
-        clue=""
+        clue="Antarctic"
+        music="app/src/main/res/raw/music_pinguin.mp3"
         image="app/src/main/res/drawable/image_penguin"
         listAnswerString="Penguin"/>
 
     <object
         name="avatar"
         category="Film"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🚀"
+        emoji2="👽"
+        emoji3="💙"
+        clue="Cameron"
+        music="app/src/main/res/raw/music_avatar.mp3"
         image="app/src/main/res/drawable/image_avatar"
         listAnswerString="avatar"/>
 
     <object
         name="dofus."
         category="Game"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🐉"
+        emoji2="🎲"
+        emoji3="🥚"
+        clue="Ankama"
+        music="app/src/main/res/raw/music_dofus.mp3"
         image="app/src/main/res/drawable/image_dofus"
         listAnswerString="dofus"/>
 
     <object
         name="friends"
         category="Series"
-        emoji1="❄️"
-        emoji2="🎩"
-        emoji3="🐧"
-        clue=""
+        emoji1="👫"
+        emoji2="☕"
+        emoji3="🛋️"
+        clue="Apartment"
+        music="app/src/main/res/raw/music_friends.mp3"
         image="app/src/main/res/drawable/image_friends"
         listAnswerString="friends"/>
 
     <object
         name="gardiens_de_la_galaxie"
         category="Film"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🦝"
+        emoji2="🌌"
+        emoji3="🦸‍♂️"
+        clue="Marvel"
+        music="app/src/main/res/raw/music_gardian_of_galaxi.mp3"
         image="app/src/main/res/drawable/image_gardiensdelagalaxie"
         listAnswerString="gardien de la galaxie"/>
 
     <object
         name="intouchable"
         category="Film"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🦽"
+        emoji2="🚗"
+        emoji3="👩🏿"
+        clue="French"
+        music="app/src/main/res/raw/music_intouchable.mp3"
         image="app/src/main/res/drawable/image_intouchable"
         listAnswerString="intouchable"/>
 
     <object
         name="james_bond"
         category="Film"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🕵️"
+        emoji2="🔫"
+        emoji3="🍸"
+        clue="MI6"
+        music="app/src/main/res/raw/music_james_bond.mp3"
         image="app/src/main/res/drawable/image_jamesbond"
         listAnswerString="james bond"/>
 
     <object
         name="mario_kart"
         category="Game"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🏎️"
+        emoji2="🍄"
+        emoji3="🌈"
+        clue="Nintendo"
+        music="app/src/main/res/raw/music_mario_kart.mp3"
         image="app/src/main/res/drawable/image_mariokart"
         listAnswerString="mario kart"/>
 
     <object
         name="stranger_things"
         category="Series"
-        emoji1=""
-        emoji2=""
-        emoji3=""
-        clue=""
+        emoji1="🚲"
+        emoji2="🔦"
+        emoji3="🛸"
+        clue="Netflix"
+        music="app/src/main/res/raw/music_stranger_thing.mp3"
         image="app/src/main/res/drawable/image_strangerthings"
         listAnswerString="stranger things" />
 
