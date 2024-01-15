@@ -52,7 +52,7 @@
         emoji2="☕"
         emoji3="🛋️"
         clue="Apartment"
-        music="app/src/main/res/raw/friends.mp3"
+        music="app/src/main/res/raw/music_friends.mp3"
         image="app/src/main/res/drawable/image_friends"
         listAnswerString="friends"/>
 
