@@ -2,6 +2,7 @@ package com.example.popinteraction
 
 import android.app.AlertDialog
 import android.content.Context
+import android.media.AudioAttributes
 import android.media.MediaPlayer
 import java.io.File
 import java.io.IOException
@@ -24,7 +25,13 @@ class AudioPlayer(private val context: Context) {
                     showFileNotFoundDialog()
                 }
             } else {
-               //Recupération de fichiers sonore dans le telephone
+                mediaPlayer = MediaPlayer().apply {
+                    setDataSource(filePath)
+                    prepareAsync()
+                    setOnPreparedListener {
+                        start()
+                    }
+                }
             }
         } catch (e: IOException) {
             e.printStackTrace()

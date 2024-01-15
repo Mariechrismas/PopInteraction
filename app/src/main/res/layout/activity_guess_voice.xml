@@ -58,19 +58,6 @@
         app:srcCompat="@android:drawable/screen_background_dark_transparent" />
 
     <TextView
-        android:id="@+id/solution"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        style="@style/TextStyle"
-        android:text="@string/name"
-        app:layout_constraintTop_toBottomOf="@id/imagesolution"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"/>
-
-    <TextView
         android:id="@+id/timer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -78,7 +65,7 @@
         android:gravity="center"
         style="@style/TextStyle"
         android:text="@string/timer"
-        app:layout_constraintTop_toBottomOf="@id/solution"
+        app:layout_constraintTop_toBottomOf="@id/imagesolution"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"/>

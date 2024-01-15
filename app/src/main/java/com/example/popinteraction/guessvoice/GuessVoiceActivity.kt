@@ -14,7 +14,6 @@ import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.popinteraction.R
 import com.example.popinteraction.XMLReadFile
-import com.example.popinteraction.DataObject
 import com.example.popinteraction.ShowImage
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
@@ -26,7 +25,6 @@ class GuessVoiceActivity : AppCompatActivity() {
     private lateinit var validateButton: ToggleButton
     private lateinit var imageSolution: ImageView
     private lateinit var timer: TextView
-    private lateinit var solution: TextView
 
     private var listOfDataObject: MutableList<GuessVoiceObject> = mutableListOf()
     private var score = 0
@@ -51,7 +49,6 @@ class GuessVoiceActivity : AppCompatActivity() {
         theme = findViewById(R.id.theme)
         answer = findViewById(R.id.selectionEditText)
         timer = findViewById(R.id.timer)
-        solution = findViewById(R.id.solution)
     }
 
     private fun InitGame(numberOfLevel: Int){
@@ -74,7 +71,6 @@ class GuessVoiceActivity : AppCompatActivity() {
         displayScore.text = resources.getString(R.string.score) + ": " + score
         imageSolution.setImageResource(R.drawable.transparent_picture)
         answer.setText("")
-        solution.text = ""
         isPartyEnd = true
 
         resetTimer()
@@ -108,7 +104,7 @@ class GuessVoiceActivity : AppCompatActivity() {
             }
         }else if(listOfDataObject[currentParty].listAnswerString.any { it.trim().equals(userInput.trim(), ignoreCase = true)}) {
             calculateScore(currentMillisUntilFinished)
-            timer.text = resources.getString(R.string.congratulation    )
+            timer.text = resources.getString(R.string.congratulation)
             partyIsEnd()
             answer.setText("")
         }

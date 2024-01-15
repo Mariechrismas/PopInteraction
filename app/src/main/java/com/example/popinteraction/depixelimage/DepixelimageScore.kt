@@ -12,7 +12,7 @@ class DepixelimageScore : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_emoji_story_score)
+        setContentView(R.layout.activity_depixelimage_score)
         scoreTextView = findViewById(R.id.score)
         val score = intent.getStringExtra("Score")
         scoreTextView.text = resources.getString(R.string.score) + " : " + score
